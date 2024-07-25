@@ -1,0 +1,14 @@
+/* CSS variables */
+:root {
+	--color-primary-red: #FE6D79;
+	--color-primary-green: #00C39A;
+	--color-primary-purple: #9D4Edd;
+	--color-secondary-purple: #7E3EB1;
+	--color-primary-blue: #56CFE1;
+	--color-primary-yellow: #FFAC06;
+	--color-neural-stonewhite: #E9E6E;
+	--color-neutral-stonegrey: #3C4046;
+
+	--color-white: #FFFEFC;
+	--color-black: #000616;
+}

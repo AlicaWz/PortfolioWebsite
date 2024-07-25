@@ -1,0 +1,6 @@
+@custom-media --small-viewport (max-width: 568px); //mobile
+@custom-media --medium-viewport (min-width: 569px); //tablet
+@custom-media --large-viewport (min-width: 1280px); //desktop
+@custom-media --xlarge-viewport (min-width: 1920px); //super-wide-desktop
+
+//@custom-media --large-viewport (min-width: 1440px); //desktop

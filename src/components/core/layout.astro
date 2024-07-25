@@ -1,0 +1,65 @@
+---
+import '@css/index.css'
+
+
+export interface Props {
+    locale?: string
+	meta?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    metaImage?: string;
+  };
+}
+
+const { locale = 'eu', meta } = Astro.props
+const canonical = `${Astro.url.origin}${Astro.url.pathname}`
+---
+
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+		<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<link rel="canonical" href={canonical} /> -->
+		<meta name="msapplication-TileColor" content="#da532c" />
+		<meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+		<meta name="theme-color" content="#ffffff" />
+
+		<meta name="generator" content={Astro.generator} />
+		<title>{meta?.metaTitle}</title>
+		<meta name="description" content={meta?.metaDescription} />
+		<meta name="og:title" content={meta?.metaTitle} />
+		<meta name="og:description" content={meta?.metaDescription} />
+		<meta name="og:image" content={!!meta?.metaImage ? meta.metaImage : '/images/ogImage.png'} />
+		<meta name="twitter:card" content="summary" />
+	</head>
+
+	<body>
+		<main class="relative">
+			<slot />
+		</main>
+		<style>
+			:root {
+				--currentViewport: 'small';
+
+				@media (--medium-viewport) {
+					--currentViewport: 'medium';
+				}
+
+				@media (--large-viewport) {
+					--currentViewport: 'large';
+				}
+			}
+			main {
+				position: relative;
+				z-index: 10;
+			}
+		</style>
+	</body>
+</html>

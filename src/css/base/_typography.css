@@ -1,0 +1,29 @@
+.copy-large {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: auto;
+}
+
+.copy-default {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: auto;
+}
+
+.copy-small {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: auto;
+}
+
+.regular {
+    font-weight: 400;
+}
+
+.semibold {
+    font-weight: 600;
+}
+
+.bold {
+    font-weight: 700;
+}

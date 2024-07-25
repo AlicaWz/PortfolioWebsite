@@ -11,6 +11,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.8.2
         version: 0.8.2(typescript@5.5.4)
+      '@storyblok/astro':
+        specifier: ^5.0.0
+        version: 5.0.0(astro@4.12.2(typescript@5.5.4))
       astro:
         specifier: ^4.12.2
         version: 4.12.2(typescript@5.5.4)
@@ -554,6 +557,14 @@ packages:
   '@shikijs/core@1.11.1':
     resolution: {integrity: sha512-Qsn8h15SWgv5TDRoDmiHNzdQO2BxDe86Yq6vIHf5T0cCvmfmccJKIzHtep8bQO9HMBZYCtCBzaXdd1MnxZBPSg==}
 
+  '@storyblok/astro@5.0.0':
+    resolution: {integrity: sha512-fcfDII/lz4aKmoK1IcBG/Xh7DKqNKiTXQjqkRwXPr4/nP4bXqdMXmObKhekJH3+N50+wgAIz7Ceo8XVqkvWCoA==}
+    peerDependencies:
+      astro: ^3.0.0 || ^4.0.0
+
+  '@storyblok/js@3.0.8':
+    resolution: {integrity: sha512-JY+abbswBId84Ubr0yRwNpq5Klf9546Ia2Qs1pn6en5Trz8o6EcBJIwxvR6evjJ0Vp2cLKT7MV1yfGLAtnzycA==}
+
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
 
@@ -701,6 +712,10 @@ packages:
   camelcase@7.0.1:
     resolution: {integrity: sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==}
     engines: {node: '>=14.16'}
+
+  camelcase@8.0.0:
+    resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
+    engines: {node: '>=16'}
 
   caniuse-lite@1.0.30001643:
     resolution: {integrity: sha512-ERgWGNleEilSrHM6iUz/zJNSQTP8Mr21wDWpdgvRwcTXGAq6jMtOUPP4dqFPTdKqZ2wKTdtB+uucZ3MRpAUSmg==}
@@ -1123,6 +1138,9 @@ packages:
     resolution: {integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==}
     engines: {node: '>=8'}
 
+  lodash.mergewith@4.6.2:
+    resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
+
   log-symbols@6.0.0:
     resolution: {integrity: sha512-i24m8rpwhmPIS4zscNzK6MSEhk0DUWa/8iYQWxhffV8jkI4Phvs3F+quL5xvS0gdQR0FyTCMMH33Y78dDTzzIw==}
     engines: {node: '>=18'}
@@ -1528,6 +1546,9 @@ packages:
   stdin-discarder@0.2.2:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
     engines: {node: '>=18'}
+
+  storyblok-js-client@6.8.1:
+    resolution: {integrity: sha512-/iH67CRmDi3nGds5B6X9B7dDyA1DA0B4UOxuPia/RF+tVc+lBnM0sac2qLxijMNmLKAeVGuSmB70MNUe6uD3NQ==}
 
   string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -2324,6 +2345,17 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
 
+  '@storyblok/astro@5.0.0(astro@4.12.2(typescript@5.5.4))':
+    dependencies:
+      '@storyblok/js': 3.0.8
+      astro: 4.12.2(typescript@5.5.4)
+      camelcase: 8.0.0
+      lodash.mergewith: 4.6.2
+
+  '@storyblok/js@3.0.8':
+    dependencies:
+      storyblok-js-client: 6.8.1
+
   '@types/babel__core@7.20.5':
     dependencies:
       '@babel/parser': 7.24.8
@@ -2572,6 +2604,8 @@ snapshots:
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
 
   camelcase@7.0.1: {}
+
+  camelcase@8.0.0: {}
 
   caniuse-lite@1.0.30001643: {}
 
@@ -2999,6 +3033,8 @@ snapshots:
   locate-path@5.0.0:
     dependencies:
       p-locate: 4.1.0
+
+  lodash.mergewith@4.6.2: {}
 
   log-symbols@6.0.0:
     dependencies:
@@ -3654,6 +3690,8 @@ snapshots:
   sprintf-js@1.0.3: {}
 
   stdin-discarder@0.2.2: {}
+
+  storyblok-js-client@6.8.1: {}
 
   string-width@4.2.3:
     dependencies:
