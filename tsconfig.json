@@ -5,14 +5,12 @@
     "typeRoots": ["node_modules/@types", "src/types"],
     "paths": {
       "@components/*": ["src/components/*"],
-      "@translations/*": ["src/translations/*"],
       "@icons/*": ["src/icons/*"],
       "@images/*": ["src/images/*"],
       "@pages/*": ["src/pages/*"],
       "@public/*": ["public/*"],
       "@system/*": ["src/system/*"],
       "@templates/*": ["src/templates/*"],
-      "@api/*": ["src/system/services/api/*"],
       "@css/*": ["src/css/*"]
     },
   }

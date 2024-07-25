@@ -1,5 +1,5 @@
 ---
-import Layout from '@components/core/Layout.astro';
+import Layout from '@components/core/Layout.astro'
 import { useStoryblokApi } from '@storyblok/astro';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 
@@ -32,7 +32,6 @@ const { data } = await storyblokApi
 }
 
 const story = data.story ? data.story : null;
-const rels = data.rels ? data.rels : null;
 
 const metaData = {
     metaTitle: story.content.metaTitle ? story.content.metaTitle : '',
@@ -44,5 +43,6 @@ const metaData = {
 ---
 
 <Layout meta={metaData}>
-    <StoryblokComponent blok={story.content} rels={rels} />
+    <StoryblokComponent blok={story.content} />
 </Layout>
+

@@ -1,7 +1,6 @@
 ---
 import '@css/index.css'
 
-
 export interface Props {
     locale?: string
 	meta?: {
@@ -26,10 +25,10 @@ const canonical = `${Astro.url.origin}${Astro.url.pathname}`
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
 		<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<link rel="canonical" href={canonical} /> -->
+		<link rel="canonical" href={canonical} /> 
 		<meta name="msapplication-TileColor" content="#da532c" />
 		<meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-		<meta name="theme-color" content="#ffffff" />
+		<meta name="theme-color" content="#ffffff" />-->
 
 		<meta name="generator" content={Astro.generator} />
 		<title>{meta?.metaTitle}</title>

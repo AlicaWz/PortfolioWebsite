@@ -1,6 +1,4 @@
-@custom-media --small-viewport (max-width: 768px); //mobile
-@custom-media --medium-viewport (min-width: 769px); //tablet
-@custom-media --large-viewport (min-width: 1280px); //desktop
-@custom-media --xlarge-viewport (min-width: 1920px); //super-wide-desktop
-
-//@custom-media --large-viewport (min-width: 1440px); //desktop
+@custom-media --small-viewport (max-width: 768px); 
+@custom-media --medium-viewport (min-width: 769px); 
+@custom-media --large-viewport (min-width: 1280px); 
+@custom-media --xlarge-viewport (min-width: 1920px); 

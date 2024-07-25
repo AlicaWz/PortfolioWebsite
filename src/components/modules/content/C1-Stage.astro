@@ -1,0 +1,22 @@
+---
+import { storyblokEditable } from '@storyblok/astro'
+import type { AssetStoryblok, IComponentDefaults } from '@system/utils/types'
+
+
+export interface C1StageProps extends IComponentDefaults {
+  headline: string
+}
+
+export interface Props {
+  blok: C1StageProps
+}
+
+
+const { blok } = Astro.props
+const { headline } = blok
+
+---
+
+<section aria-label="Stage" id="stage" {...storyblokEditable(blok)} id={blok._uid}>
+    <h1>{headline}</h1>
+</section>
