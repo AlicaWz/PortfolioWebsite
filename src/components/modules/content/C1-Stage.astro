@@ -1,9 +1,11 @@
 ---
+import Tag, { type TagProps } from '@components/library/Tag.astro'
 import { storyblokEditable } from '@storyblok/astro'
 import type { AssetStoryblok, IComponentDefaults } from '@system/utils/types'
 
 
 export interface C1StageProps extends IComponentDefaults {
+  tags: TagProps[]
   headline: string
 }
 
@@ -11,12 +13,20 @@ export interface Props {
   blok: C1StageProps
 }
 
-
 const { blok } = Astro.props
-const { headline } = blok
+const { tags, headline } = blok
+
+console.log("blok", blok)
 
 ---
 
 <section aria-label="Stage" id="stage" {...storyblokEditable(blok)} id={blok._uid}>
+    {!!tags && 
+        <div class="tags">
+            {tags.map((tag) => (
+                <Tag {...tag} />
+            ))}
+        </div>
+    }
     <h1>{headline}</h1>
 </section>

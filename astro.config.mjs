@@ -15,6 +15,7 @@ export default defineConfig({
   integrations: [
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
+      bridge: env.STORYBLOK_IS_PREVIEW === 'yes',
       enableFallbackComponent: true,
       components: {
         p1Generic: 'templates/P1-Generic',

@@ -1,0 +1,67 @@
+---
+export interface TagProps {
+  label: string;
+  color: "Red" | "Blue" | "Green" | "Yellow" | "Purple";
+  variant: "primary" | "secondary";
+}
+
+const { label, color, variant = "primary" } = Astro.props;
+---
+
+<div class=`${variant}-${color}`>
+  <p>{label}</p>
+</div>
+
+<style>
+  div {
+    padding: 8px 16px;
+    border-radius: 100px;
+    color: white;
+    width: fit-content;
+  }
+
+  p {
+    font-weight: bold;
+  }
+
+  .primary {
+    &-red {
+      background-color: var(--color-primary-red);
+    }
+    &-blue {
+      background-color: var(--color-primary-blue);
+    }
+    &-green {
+      background-color: var(--color-primary-green);
+    }
+    &-yellow {
+      background-color:  var(--color-primary-yellow);
+    }
+    &-purple {
+      background-color:  var(--color-primary-purple);
+    }
+  }
+
+  .secondary {
+    &-red {
+      border: 2px solid var(--color-primary-red);
+      color: var(--color-primary-red);
+    }
+    &-blue {
+      border: 2px solid var(--color-primary-blue);
+      color: var(--color-primary-blue);
+    }
+    &-green {
+      border: 2px solid var(--color-primary-green);
+      color: var(--color-primary-green);
+    }
+    &-yellow {
+      border: 2px solid var(--color-primary-yellow);
+      color: var(--color-primary-yellow);
+    }
+    &-purple {
+      border: 2px solid var(--color-primary-purple);
+      color: var(--color-primary-purple);
+    }
+  }
+</style>

@@ -19,6 +19,14 @@
     margin: 0 80px;
   }
 }
+
+@media (--xlarge-viewport) {
+  .grid-container {
+    margin: 0 auto;
+    max-width: 1920px;
+  }
+}
+
 /* Default for mobile */
 .col-span-1 {
   grid-column: span 1 / span 1;
