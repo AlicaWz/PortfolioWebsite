@@ -11,6 +11,7 @@ const { blok } = Astro.props
 
 <div
   id="content"
+  class="grid-container grid-margin"
   {...storyblokEditable(blok)}>
   {
     blok.modules?.map((blok: SbBlokData) => {

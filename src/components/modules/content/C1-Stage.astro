@@ -1,32 +1,80 @@
 ---
-import Tag, { type TagProps } from '@components/library/Tag.astro'
-import { storyblokEditable } from '@storyblok/astro'
-import type { AssetStoryblok, IComponentDefaults } from '@system/utils/types'
-
+import Button, { type ButtonProps } from "@components/library/Button.astro";
+import IconButton, {
+  type IconButtonProps,
+} from "@components/library/IconButton.astro";
+import type { ImageProps } from "@components/library/ImageComp.astro";
+import ImageComp from "@components/library/ImageComp.astro";
+import Tag, { type TagProps } from "@components/library/Tag.astro";
+import { storyblokEditable } from "@storyblok/astro";
+import type { AssetStoryblok, IComponentDefaults } from "@system/utils/types";
 
 export interface C1StageProps extends IComponentDefaults {
-  tags: TagProps[]
-  headline: string
+  tags: TagProps[];
+  headline: string;
+  button: ButtonProps[];
+  linkedInButton: IconButtonProps[];
+  image: ImageProps;
 }
 
 export interface Props {
-  blok: C1StageProps
+  blok: C1StageProps;
 }
 
-const { blok } = Astro.props
-const { tags, headline } = blok
+const { blok } = Astro.props;
+const { tags, headline, button, linkedInButton, image } = blok;
 
-console.log("blok", blok)
-
+console.log("blok", blok);
 ---
 
-<section aria-label="Stage" id="stage" {...storyblokEditable(blok)} id={blok._uid}>
-    {!!tags && 
+<section
+  aria-label="Stage"
+  class="c1-stage col-span-4 lg-col-span-12 grid-container"
+  {...storyblokEditable(blok)}
+  id={blok._uid}
+>
+  <div class="col-span-4 md-col-span-2 lg-col-span-7">
+    {
+      !!tags && (
         <div class="tags">
-            {tags.map((tag) => (
-                <Tag {...tag} />
-            ))}
+          {tags.map((tag) => (
+            <Tag {...tag} />
+          ))}
         </div>
+      )
     }
     <h1>{headline}</h1>
+    <div class="button-wrapper">
+      {!!button && button.map((button) => <Button {...button} />)}
+      {
+        !!linkedInButton &&
+          linkedInButton.map((linkedInButton) => (
+            <IconButton {...linkedInButton} />
+          ))
+      }
+    </div>
+  </div>
+    {
+      !!image && (
+        <ImageComp
+          gridSmall={{ start: 1, span: 4 }}
+          gridMedium={{ start: 2, span: 2 }}
+          gridLarge={{ start: 7, span: 3 }}
+          image={image}
+          inferSize={true}
+        />
+      )
+    }
 </section>
+
+<style>
+  .tags {
+    display: flex;
+    gap: 8px;
+  }
+
+  .button-wrapper {
+    display: flex;
+    gap: 16px;
+  }
+</style>

@@ -23,6 +23,7 @@ export interface LinktStoryblok {
   id: string
   url: string
   linktype: string
+  email: string
   fieldtype: string
   cached_url: string
 }

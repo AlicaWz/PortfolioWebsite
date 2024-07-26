@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  font-family: "Poppins";
   background-color: var(--color-black);
   color: var(--color-white);
 }
@@ -41,7 +42,6 @@ h6 {
 
 p {
   margin: 0;
-  font-family: "Poppins";
 }
 
 h1 {
