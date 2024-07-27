@@ -12,7 +12,6 @@ export interface ImageProps {
 }
 
 const { gridSmall, gridMedium, gridLarge, image, inferSize = "true" } = Astro.props;
-console.log("PROPS", Astro.props)
 
 const smallStart = gridSmall && gridSmall.start
 const smallSpan = gridSmall && gridSmall.span
@@ -47,6 +46,7 @@ const largeSpan = gridLarge && gridLarge.span
         object-fit: cover;
         object-position: bottom;
         overflow: visible;
+        z-index: 1;
 
         @media (--large-viewport) {
             width: 120%;

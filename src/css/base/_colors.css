@@ -1,19 +1,30 @@
 /* CSS variables */
 :root {
-	--color-primary-red: #FE6D79;
-	--color-primary-green: #00C39A;
-	--color-primary-purple: #9D4Edd;
-	--color-secondary-purple: #7E3EB1;
-	--color-primary-blue: #56CFE1;
-	--color-primary-yellow: #FFAC06;
-	--color-neutral-stonewhite: #EFEDE9;
-	--color-neutral-stonegrey: #3C4046;
+  --color-primary-red: #fe6d79;
+  --color-primary-green: #00c39a;
+  --color-primary-purple: #9d4edd;
+  --color-secondary-purple: #7e3eb1;
+  --color-primary-blue: #56cfe1;
+  --color-primary-yellow: #ffac06;
+  --color-neutral-stonewhite: #efede9;
+  --color-neutral-stonegrey: #3c4046;
 
-	--color-white: #FFFEFC;
-	--color-black: #000616;
+  --color-white: #fffefc;
+  --color-black: #000616;
 }
 
-
-/* .red { 
-	color: var(--color-primary-red);
-} */
+.bg-red {
+  background-color: var(--color-primary-red);
+}
+.bg-blue {
+  background-color: var(--color-primary-blue);
+}
+.bg-green {
+  background-color: var(--color-primary-green);
+}
+.bg-yellow {
+  background-color: var(--color-primary-yellow);
+}
+.bg-purple {
+  background-color: var(--color-primary-purple);
+}

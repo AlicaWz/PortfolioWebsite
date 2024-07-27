@@ -24,6 +24,7 @@
 
 @media (--large-viewport) {
   .grid-container {
+    padding-top: 80px;
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
   }

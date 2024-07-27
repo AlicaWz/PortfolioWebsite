@@ -8,7 +8,7 @@ export interface TagProps {
 const { label, color, variant = "primary" } = Astro.props;
 ---
 
-<div class=`${variant}-${color}`>
+<div class:list={[variant === "primary" ? `primary bg-${color}` : `secondary-${color}`]}>
   <p>{label}</p>
 </div>
 
@@ -24,25 +24,8 @@ const { label, color, variant = "primary" } = Astro.props;
     font-weight: bold;
   }
 
-  .primary {
-    &-red {
-      background-color: var(--color-primary-red);
-    }
-    &-blue {
-      background-color: var(--color-primary-blue);
-    }
-    &-green {
-      background-color: var(--color-primary-green);
-    }
-    &-yellow {
-      background-color:  var(--color-primary-yellow);
-    }
-    &-purple {
-      background-color:  var(--color-primary-purple);
-    }
-  }
-
   .secondary {
+    background-color: transparent;
     &-red {
       border: 2px solid var(--color-primary-red);
       color: var(--color-primary-red);
