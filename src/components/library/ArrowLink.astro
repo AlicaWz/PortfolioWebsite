@@ -1,0 +1,78 @@
+---
+import type { LinktStoryblok } from "@system/utils/types";
+import { Icon } from "astro-icon/components";
+
+export interface ArrowLinkProps {
+  link: LinktStoryblok;
+  label: string;
+  variant: "arrow-right" | "arrow-left" | "arrow-up" | "arrow-down";
+  arrowPos: "leftSide" | "rightSide" | "above" | "under";
+  labelPos: "label-down" | "label-up";
+  class: string;
+}
+
+const {
+  link,
+  label,
+  arrowPos,
+  variant,
+  class: className,
+  labelPos,
+  textAlign,
+} = Astro.props;
+---
+
+<a
+  href={link.url.length ? link.url : link.cached_url}
+  class:list={[arrowPos, labelPos, textAlign, className]}
+>
+  <span class="label">{label}</span>
+  <Icon
+    name={variant}
+    width={variant === "arrow-right" || variant === "arrow-left" ? 43 : 11}
+    height={variant === "arrow-right" || variant === "arrow-left" ? 11 : 43}
+    class="divider"
+  />
+</a>
+
+<style>
+  a {
+    display: flex;
+    font-size: 12px;
+    font-weight: 300;
+
+    .label {
+      display: block;
+      white-space: pre-wrap;
+      line-height: 1.2; 
+      width: 2.4em; 
+    }
+
+    /* variant */
+    &.leftSide, &.rightSide {
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 4px;
+    }
+
+    &.rightSide {
+      flex-direction: row;
+    }
+
+    &.above {
+      flex-direction: column-reverse;
+    }
+
+    &.under {
+      flex-direction: column;
+    }
+
+    &.label-down {
+      align-items: flex-end;
+    }
+
+    &.label-up {
+      align-items: flex-start;
+    }
+  }
+</style>

@@ -17,6 +17,7 @@
     "@storyblok/js": "^3.0.8",
     "@types/node": "^20.14.12",
     "astro": "^4.12.2",
+    "astro-icon": "^1.1.0",
     "vite": "^5.3.5"
   },
   "devDependencies": {

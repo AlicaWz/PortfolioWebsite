@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 import node from '@astrojs/node';
+import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import storyblok from '@storyblok/astro';
 import { loadEnv } from 'vite';
@@ -13,6 +14,7 @@ export default defineConfig({
     mode: 'standalone'
   }),
   integrations: [
+    icon(), 
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
       bridge: env.STORYBLOK_IS_PREVIEW === 'yes',
@@ -20,6 +22,7 @@ export default defineConfig({
       components: {
         p1Generic: 'templates/P1-Generic',
         c1Stage: 'components/modules/content/C1-Stage',
+        c2Text: 'components/modules/content/C2-Text', 
         c3Image: 'components/modules/content/C3-Image',
         c4Numbers: 'components/modules/content/C4-Numbers',
       },
