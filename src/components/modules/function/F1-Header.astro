@@ -1,0 +1,22 @@
+---
+import { languages, getTransLink } from '@system/utils/langs'
+const { language, langSwitch } = Astro.props
+
+console.log("language", language)
+---
+<header class="">
+      <nav class="">
+        <a href={getTransLink(language, '/about-me')} class="">About</a>
+        {
+            languages.map((lang) => (
+              <a
+                class={`lang-toggle hover:bg-gray-200 px-2 ${lang === language ? 'bg-gray-200' : ''}`}
+                href={langSwitch[lang]}
+              >
+                {lang}
+              </a>
+            ))
+          }
+      </nav>
+    </div>
+  </header>

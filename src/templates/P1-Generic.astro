@@ -6,7 +6,7 @@
  import { storyblokEditable, type SbBlokData } from "@storyblok/astro"
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro"
 
-const { blok } = Astro.props
+const { blok, language } = Astro.props
 ---
 
 <div
@@ -15,7 +15,7 @@ const { blok } = Astro.props
   {...storyblokEditable(blok)}>
   {
     blok.modules?.map((blok: SbBlokData) => {
-      return <StoryblokComponent blok={blok} />
+      return <StoryblokComponent language={language} blok={blok} />
     })
   }
 </div>

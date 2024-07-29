@@ -1,8 +1,10 @@
 ---
 import '@css/index.css'
+import Header from '@components/modules/function/F1-Header.astro'
 
 export interface Props {
-    locale?: string
+	language: "default" | "de"
+	langSwitch: any
 	meta?: {
     metaTitle?: string;
     metaDescription?: string;
@@ -10,12 +12,12 @@ export interface Props {
   };
 }
 
-const { locale = 'eu', meta } = Astro.props
+const { language, langSwitch,  meta } = Astro.props
 const canonical = `${Astro.url.origin}${Astro.url.pathname}`
 ---
 
 <!doctype html>
-<html lang={locale}>
+<html lang={language}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +41,7 @@ const canonical = `${Astro.url.origin}${Astro.url.pathname}`
 	</head>
 
 	<body>
+		<Header langSwitch={langSwitch} language={language}/> 
 		<main class="relative">
 			<slot />
 		</main>
