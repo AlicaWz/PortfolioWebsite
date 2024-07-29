@@ -1,22 +1,74 @@
 ---
-import { languages, getTransLink } from '@system/utils/langs'
-const { language, langSwitch } = Astro.props
-
-console.log("language", language)
+import { languages } from "@system/utils/langs";
+import { Icon } from "astro-icon/components";
+const { language, langSwitch } = Astro.props;
 ---
-<header class="">
-      <nav class="">
-        <a href={getTransLink(language, '/about-me')} class="">About</a>
-        {
-            languages.map((lang) => (
-              <a
-                class={`lang-toggle hover:bg-gray-200 px-2 ${lang === language ? 'bg-gray-200' : ''}`}
-                href={langSwitch[lang]}
-              >
-                {lang}
-              </a>
-            ))
-          }
-      </nav>
-    </div>
-  </header>
+
+<header class="f1-header">
+  <nav>
+    <a class="theme-switch"><Icon name="sun-path" height={32} width={32} /></a>
+    <span>
+      {
+        languages.map((lang) => (
+          <a
+            class:list={`lang-switch ${lang === language ? "active" : ""}`}
+            href={langSwitch[lang]}
+          >
+            {lang === "default" ? "en" : lang}
+          </a>
+        ))
+      }
+    </span>
+  </nav>
+</header>
+
+<style>
+  .f1-header {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 16px 0;
+      width: 100%;
+      max-width: 1920px;
+      margin: 0 auto;
+      @media (--medium-viewport) {
+        padding: 24px 32px 0;
+      }
+      @media (--xlarge-viewport) {
+        padding: 24px 0 0;
+      }
+    }
+
+    a.theme-switch {
+      stroke: var(--color-white);
+      display: inline-block;
+      transition: transform 0.5s ease-in-out;
+      height: 32px;
+
+      &:hover {
+        cursor: pointer;
+        fill: var(--color-white);
+        transform: rotate(360deg);
+      }
+    }
+
+    a.lang-switch {
+      opacity: 50%;
+      padding: 8px;
+      font-size: 20px;
+
+      &:hover {
+        color: var(--color-primary-yellow);
+      }
+    }
+
+    a.active {
+      opacity: 100%;
+    }
+  }
+</style>
