@@ -3,31 +3,36 @@ import type { LinktStoryblok } from "@system/utils/types";
 import { Icon } from "astro-icon/components";
 
 export interface ArrowLinkProps {
-  link: LinktStoryblok;
+  link?: LinktStoryblok;
+  id?: string;
   label: string;
   variant: "arrow-right" | "arrow-left" | "arrow-up" | "arrow-down";
   arrowPos: "leftSide" | "rightSide" | "above" | "under";
   labelPos: "label-down" | "label-up" | "label-right";
+  animation: "bounce";
   noLabelWidth: boolean;
   class: string;
 }
 
 const {
   link,
+  id,
   label,
   arrowPos,
   variant,
   class: className,
   labelPos,
-  noLabelWidth = "false",
+  noLabelWidth,
+  animation,
 } = Astro.props;
 ---
 
 <a
-  href={link.url.length ? link.url : link.cached_url}
-  class:list={[arrowPos, labelPos, className]}
+  id={id}
+  href={link.url.length ? link.url : link.cached_url || ""}
+  class:list={[arrowPos, labelPos, className, animation]}
 >
-  <span class:list={["label", { noLabelWidth }]}>{label}</span>
+  <span class:list={["label", { noLabelWidth: noLabelWidth }]}>{label}</span>
   <Icon
     name={variant}
     width={variant === "arrow-right" || variant === "arrow-left" ? 43 : 11}
@@ -85,6 +90,23 @@ const {
     &.label-right {
       align-items: flex-end;
       text-align: right;
+    }
+
+    /* animation */
+    &.bounce {
+      animation: bounce 1s infinite;
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(-25%);
+          animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+          transform: translateY(0);
+          animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+      }
     }
   }
 </style>

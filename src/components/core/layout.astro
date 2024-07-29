@@ -1,6 +1,7 @@
 ---
 import '@css/index.css'
 import Header from '@components/modules/function/F1-Header.astro'
+import Footer from '@components/modules/function/F2-Footer.astro'
 
 export interface Props {
 	language: "default" | "de"
@@ -45,6 +46,7 @@ const canonical = `${Astro.url.origin}${Astro.url.pathname}`
 		<main class="relative">
 			<slot />
 		</main>
+		<Footer langSwitch={langSwitch} language={language}/>
 		<style>
 			:root {
 				--currentViewport: 'small';

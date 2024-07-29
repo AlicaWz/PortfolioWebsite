@@ -1,0 +1,75 @@
+---
+import { useStoryblokApi } from "@storyblok/astro";
+import ArrowLink from "@components/library/ArrowLink.astro";
+
+export interface F2FooterProps {
+  copyright: string;
+  backToTopLabel: String;
+}
+
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi
+  .get("cdn/stories/globals/f2Footer", {
+    version:
+      (import.meta.env.STORYBLOK_IS_PREVIEW ||
+        process.env.STORYBLOK_IS_PREVIEW) === "yes"
+        ? "draft"
+        : "published",
+  })
+  .catch((error) => {
+    console.log("Error", error);
+    return { data: null };
+  });
+
+const footer = data.story.content;
+---
+
+<footer class="f2-footer">
+  <p>{footer.copyright}</p>
+  <ArrowLink
+    id="backToTop"
+    link={{ url: "" }}
+    label={footer.backToTopLabel}
+    labelPos="label-right"
+    variant="arrow-up"
+    arrowPos="right"
+    animation="bounce"
+  />
+</footer>
+
+<script>
+  const backToTop = document.getElementById("backToTop");
+
+  backToTop?.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+
+<style>
+  .f2-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px 24px;
+    max-width: 2220px;
+    margin: 0 auto;
+
+    @media (--medium-viewport) {
+      padding: 0 32px 24px;
+    }
+    @media (--xlarge-viewport) {
+      padding: 0 0 24px;
+    }
+
+    p {
+      font-weight: 300;
+      color: var(--color-neutral-stonewhite);
+      width: fit-content;
+    }
+  }
+</style>

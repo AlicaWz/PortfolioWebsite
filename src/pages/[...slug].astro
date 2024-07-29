@@ -36,7 +36,6 @@ export async function getStaticPaths() {
             slug: full_url,
           },
         })
-        console.log("paths", paths)
       })
     })
   return paths
@@ -56,28 +55,7 @@ const { data } = await storyblokApi.get(
     language,
   }
 )
-
-/* const { data } = await storyblokApi
-  .get(`cdn/stories/${getSlug(slug)}`, {
-    content_type: "p1Generic",
-    resolve_relations: "stories",
-    version:
-      (import.meta.env.STORYBLOK_IS_PREVIEW ||
-        process.env.STORYBLOK_IS_PREVIEW) === "yes"
-        ? "draft"
-        : "published",
-  })
-  .catch((error) => {
-    console.log("Error", error);
-    return { data: null };
-  });
-
-if (data === null) {
-  return new Response("Not found", { status: 404 });
-} */
 const story = data.story
-
-console.log("data", data)
 
 const metaData = {
   metaTitle: story.content.metaTitle ? story.content.metaTitle : "",

@@ -21,7 +21,7 @@ export interface AssetStoryblok {
 
 export interface LinktStoryblok {
   id: string
-  url: string
+  url?: string
   linktype: string
   email: string
   fieldtype: string
