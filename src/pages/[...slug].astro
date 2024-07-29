@@ -1,48 +1,51 @@
 ---
-import Layout from '@components/core/Layout.astro'
-import { useStoryblokApi } from '@storyblok/astro';
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import Layout from "@components/core/layout.astro";
+import { useStoryblokApi } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 const { slug } = Astro.params;
 const storyblokApi = useStoryblokApi();
 
 export function getSlug(slug: string | undefined) {
-    if (slug === undefined) {
-        return 'home';
-    }
-    return slug;
+  if (slug === undefined) {
+    return "home";
+  }
+  return slug;
 }
 
 const { data } = await storyblokApi
-    .get(`cdn/stories/${getSlug(slug)}`, {
-        content_type: 'p1Generic',
-        resolve_relations: 'stories',
-        version:
-            (import.meta.env.STORYBLOK_IS_PREVIEW || process.env.STORYBLOK_IS_PREVIEW) === 'yes'
-                ? 'draft'
-                : 'published'
-    })
-    .catch((error) => {
-        console.log('Error', error);
-        return { data: null };
-    });
+  .get(`cdn/stories/${getSlug(slug)}`, {
+    content_type: "p1Generic",
+    resolve_relations: "stories",
+    version:
+      (import.meta.env.STORYBLOK_IS_PREVIEW ||
+        process.env.STORYBLOK_IS_PREVIEW) === "yes"
+        ? "draft"
+        : "published",
+  })
+  .catch((error) => {
+    console.log("Error", error);
+    return { data: null };
+  });
 
-    if (data === null) {
-	return new Response('Not found', { status: 404 })
+if (data === null) {
+  return new Response("Not found", { status: 404 });
 }
 
 const story = data.story ? data.story : null;
 
 const metaData = {
-    metaTitle: story.content.metaTitle ? story.content.metaTitle : '',
-    metaDescription: story.content.metaDescription ? story.content.metaDescription : '',
-    metaImage: story.content.ogImage?.filename ? story.content.ogImage?.filename : '',
-    noIndex: story.content.noIndex ? story.content.noIndex : false
+  metaTitle: story.content.metaTitle ? story.content.metaTitle : "",
+  metaDescription: story.content.metaDescription
+    ? story.content.metaDescription
+    : "",
+  metaImage: story.content.ogImage?.filename
+    ? story.content.ogImage?.filename
+    : "",
+  noIndex: story.content.noIndex ? story.content.noIndex : false,
 };
-
 ---
 
 <Layout meta={metaData}>
-    <StoryblokComponent blok={story.content} />
+  <StoryblokComponent blok={story.content} />
 </Layout>
-

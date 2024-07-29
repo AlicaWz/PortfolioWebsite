@@ -1,0 +1,45 @@
+---
+import type {
+  AssetStoryblok,
+  IComponentDefaults,
+  LinktStoryblok,
+} from "@system/utils/types";
+
+export interface ItemProps {
+  headline: string;
+  link: LinktStoryblok;
+  image: AssetStoryblok;
+}
+
+export interface TeaserOverviewProps extends IComponentDefaults {
+  headline: string;
+  items: ItemProps[];
+}
+
+export interface Props {
+  blok: TeaserOverviewProps;
+}
+
+const { blok } = Astro.props;
+const { headline, items } = blok;
+---
+
+<section
+  aria-label="Teaser Overview"
+  class="t2-overview col-span-4 lg-col-start-1 lg-col-span-12"
+  id={blok._uid}
+>
+  <h2 class="headline">{headline}</h2>
+  <div class="items">
+    {
+      items.map((item) => (
+        <div class="item">
+          <a href={item.link.url.length ? item.link.url : item.link.cached_url}>
+            <img src={item.image.filename} alt={item.image.alt} />
+            <h3>{item.headline}</h3>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>

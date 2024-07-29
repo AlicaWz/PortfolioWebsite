@@ -7,7 +7,8 @@ export interface ArrowLinkProps {
   label: string;
   variant: "arrow-right" | "arrow-left" | "arrow-up" | "arrow-down";
   arrowPos: "leftSide" | "rightSide" | "above" | "under";
-  labelPos: "label-down" | "label-up";
+  labelPos: "label-down" | "label-up" | "label-right";
+  noLabelWidth: boolean;
   class: string;
 }
 
@@ -18,15 +19,15 @@ const {
   variant,
   class: className,
   labelPos,
-  textAlign,
+  noLabelWidth = "false",
 } = Astro.props;
 ---
 
 <a
   href={link.url.length ? link.url : link.cached_url}
-  class:list={[arrowPos, labelPos, textAlign, className]}
+  class:list={[arrowPos, labelPos, className]}
 >
-  <span class="label">{label}</span>
+  <span class:list={["label", { noLabelWidth }]}>{label}</span>
   <Icon
     name={variant}
     width={variant === "arrow-right" || variant === "arrow-left" ? 43 : 11}
@@ -38,18 +39,24 @@ const {
 <style>
   a {
     display: flex;
-    font-size: 12px;
     font-weight: 300;
+    align-items: center;
+    text-transform: lowercase;
 
     .label {
       display: block;
       white-space: pre-wrap;
-      line-height: 1.2; 
-      width: 2.4em; 
+      line-height: 1.2;
+      width: 2.4em;
+    }
+
+    .noLabelWidth {
+      width: 100%;
     }
 
     /* variant */
-    &.leftSide, &.rightSide {
+    &.leftSide,
+    &.rightSide {
       flex-direction: row-reverse;
       align-items: center;
       gap: 4px;
@@ -73,6 +80,11 @@ const {
 
     &.label-up {
       align-items: flex-start;
+    }
+
+    &.label-right {
+      align-items: flex-end;
+      text-align: right;
     }
   }
 </style>
