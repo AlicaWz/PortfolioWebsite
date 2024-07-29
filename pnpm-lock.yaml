@@ -32,6 +32,9 @@ importers:
       astro-icon:
         specifier: ^1.1.0
         version: 1.1.0
+      embla-carousel:
+        specifier: ^8.1.7
+        version: 8.1.7
       vite:
         specifier: ^5.3.5
         version: 5.3.5(@types/node@20.14.12)
@@ -1175,6 +1178,9 @@ packages:
 
   electron-to-chromium@1.5.1:
     resolution: {integrity: sha512-FKbOCOQ5QRB3VlIbl1LZQefWIYwszlBloaXcY2rbfpu9ioJnNh3TK03YtIDKDo3WKBi8u+YV4+Fn2CkEozgf4w==}
+
+  embla-carousel@8.1.7:
+    resolution: {integrity: sha512-b3kBr2H+S1gx4neki0P+aqN6cA5Ibjqy4CR3Ufi3X+Q3JpoNXJgOmJMSPkoP9DKcDREwADN6UWZzRwF2oo0y9Q==}
 
   emmet@2.4.7:
     resolution: {integrity: sha512-O5O5QNqtdlnQM2bmKHtJgyChcrFMgQuulI+WdiOw2NArzprUqqxUW6bgYtKvzKgrsYpuLWalOkdhNP+1jluhCA==}
@@ -3985,6 +3991,8 @@ snapshots:
   ee-first@1.1.1: {}
 
   electron-to-chromium@1.5.1: {}
+
+  embla-carousel@8.1.7: {}
 
   emmet@2.4.7:
     dependencies:

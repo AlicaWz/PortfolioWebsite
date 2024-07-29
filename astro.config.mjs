@@ -24,6 +24,7 @@ export default defineConfig({
         c2Text: 'components/modules/content/C2-Text', 
         c3Image: 'components/modules/content/C3-Image',
         c4Numbers: 'components/modules/content/C4-Numbers',
+        t2Overview: 'components/modules/teaser/T2-Overview'
       },
       apiOptions: {
         region: 'eu'

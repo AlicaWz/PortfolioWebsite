@@ -64,11 +64,17 @@ const { language, langSwitch } = Astro.props;
 
       &:hover {
         color: var(--color-primary-yellow);
+        opacity: 100%;
       }
     }
 
     a.active {
       opacity: 100%;
+
+      &:hover {
+        cursor: default;
+        color: var(--color-white);
+      }
     }
   }
 </style>
