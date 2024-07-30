@@ -8,10 +8,11 @@ export interface ImageProps {
     gridLarge?: { start: number, span: number};
     image: AssetStoryblok
     inferSize?: boolean;
-    aspectRatio?: "1/1" | "16/9" |"9/16" | "4/3" ; 
+    backgroundColor: "Red" | "Blue" | "Green" | "Yellow" | "Purple";
+    aspectRatio?: "1/1" | "16/9" |"9/16" | "4/3" | "3/4"; 
 }
 
-const { gridSmall, gridMedium, gridLarge, image, inferSize = "true" } = Astro.props;
+const { gridSmall, gridMedium, gridLarge, image, backgroundColor, inferSize = "true", aspectRatio = "1/1" } = Astro.props;
 
 const smallStart = gridSmall && gridSmall.start
 const smallSpan = gridSmall && gridSmall.span
@@ -19,6 +20,8 @@ const mediumStart = gridMedium && gridMedium.start
 const mediumSpan = gridMedium && gridMedium.span
 const largeStart = gridLarge && gridLarge.start
 const largeSpan = gridLarge && gridLarge.span
+
+const aspectRatioClass = aspectRatio.replace('/', '-');
 ---
 
 <div class:list={[
@@ -27,14 +30,14 @@ const largeSpan = gridLarge && gridLarge.span
     `lg-col-span-${largeSpan}`,
     `col-start-${smallStart}`,
     `md-col-start-${mediumStart}`,
-    `lg-col-start-${largeStart}`
+    `lg-col-start-${largeStart}`,
+    `bg-${backgroundColor}`
 ]}>
-    <Image src={image.filename} alt={image.alt || ''} inferSize={inferSize} /> 
+    <Image src={image.filename} alt={image.alt || ''} inferSize={inferSize} class={`aspect-ratio-${aspectRatioClass}`}/> 
 </div>
 
 <style>
     div {
-        background-color: var(--color-primary-blue);
         border-radius: 24px;
         display: flex;
         align-items: flex-end;
@@ -53,5 +56,25 @@ const largeSpan = gridLarge && gridLarge.span
             width: 120%;
             transform: translateX(-80px);
         }
+    }
+
+    .aspect-ratio-1-1 {
+        aspect-ratio: 1 / 1;
+    }
+
+    .aspect-ratio-16-9 {
+        aspect-ratio: 16 / 9;
+    }
+
+    .aspect-ratio-9-16 {
+        aspect-ratio: 9 / 16;
+    }
+
+    .aspect-ratio-4-3 {
+        aspect-ratio: 4 / 3;
+    }
+
+    .aspect-ratio-3-4 {
+        aspect-ratio: 3 / 4;
     }
 </style>

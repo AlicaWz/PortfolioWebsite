@@ -6,15 +6,21 @@ import IconButton, {
 import type { ImageProps } from "@components/modules/content/C3-Image.astro";
 import C3Image from "@components/modules/content/C3-Image.astro";
 import Tag, { type TagProps } from "@components/library/Tag.astro";
-import { storyblokEditable } from "@storyblok/astro";
-import type { IComponentDefaults } from "@system/utils/types";
+import type {
+  IComponentDefaults,
+  RichtextStoryblok,
+} from "@system/utils/types";
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
 
 export interface C1StageProps extends IComponentDefaults {
   tags: TagProps[];
   headline: string;
+  copy: RichtextStoryblok;
   button: ButtonProps[];
   linkedInButton: IconButtonProps[];
-  image: ImageProps;
+  image: ImageProps[];
+  innergrid: boolean;
+  halfWidth: boolean;
 }
 
 export interface Props {
@@ -22,12 +28,24 @@ export interface Props {
 }
 
 const { blok } = Astro.props;
-const { tags, headline, button, linkedInButton, image } = blok;
+const {
+  tags,
+  headline,
+  button,
+  linkedInButton,
+  image,
+  innergrid = "false",
+  halfWidth,
+} = blok;
+const copy = renderRichText(blok.copy) || "";
 ---
 
 <section
   aria-label="Stage"
-  class="c1-stage col-span-4 lg-col-span-10"
+  class:list={[
+    "c1-stage col-span-4 lg-col-span-10",
+    { innergrid: innergrid, "lg-col-span-6": halfWidth },
+  ]}
   {...storyblokEditable(blok)}
   id={blok._uid}
 >
@@ -42,6 +60,7 @@ const { tags, headline, button, linkedInButton, image } = blok;
       )
     }
     <h1>{headline}</h1>
+    {!!copy && <Fragment set:html={copy} />}
     <div class="button-wrapper">
       {!!button && button.map((button) => <Button {...button} />)}
       {
@@ -53,33 +72,37 @@ const { tags, headline, button, linkedInButton, image } = blok;
     </div>
   </div>
   {
-    !!image && (
-      <C3Image
-        gridSmall={{ start: 1, span: 4 }}
-        gridMedium={{ start: 3, span: 2 }}
-        gridLarge={{ start: 8, span: 3 }}
-        image={image}
-        inferSize={true}
-      />
-    )
+    !!image &&
+      image.map((image: ImageProps) => (
+        <C3Image
+          gridSmall={{ start: 1, span: 4 }}
+          gridMedium={{ start: 3, span: 2 }}
+          gridLarge={{ start: 8, span: 3 }}
+          inferSize={true}
+          {...image}
+        />
+      ))
   }
 </section>
 
 <style>
   .c1-stage {
     align-items: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-
-    @media (--medium-viewport) {
-        gap: 24px;
-    }
-
-    @media (--large-viewport) {
-      grid-template-columns: repeat(10, 1fr);
-    }
   }
+
+  .innergrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      @media (--medium-viewport) {
+        gap: 24px;
+      }
+
+      @media (--large-viewport) {
+        grid-template-columns: repeat(10, 1fr);
+      }
+    }
 
   .lg-leftside {
     display: flex;
@@ -90,13 +113,13 @@ const { tags, headline, button, linkedInButton, image } = blok;
     }
 
     & > *:nth-last-child(2) {
-        margin-bottom: 48px;
+      margin-bottom: 48px;
     }
 
     & > *:last-child {
       margin-bottom: 0px;
     }
- /*    @media (--medium-viewport) {
+    /*    @media (--medium-viewport) {
       padding-bottom: 40px;
     }
 
@@ -106,7 +129,8 @@ const { tags, headline, button, linkedInButton, image } = blok;
   }
   .tags {
     display: flex;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 12px 8px;
   }
 
   .button-wrapper {

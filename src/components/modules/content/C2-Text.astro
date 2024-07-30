@@ -46,8 +46,8 @@ const copy = renderRichText(blok.copy) || "";
         ))
     }
   </div>
-  <div class=`copy text-${textalignment}`>
-    {copy}
+  <div class=`text-${textalignment}`>
+    <Fragment set:html={copy} />
   </div>
 </section>
 

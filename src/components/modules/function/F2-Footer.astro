@@ -5,6 +5,7 @@ import ArrowLink from "@components/library/ArrowLink.astro";
 export interface F2FooterProps {
   copyright: string;
   backToTopLabel: String;
+  positionAbsolute: boolean;
 }
 
 const storyblokApi = useStoryblokApi();
@@ -21,10 +22,11 @@ const { data } = await storyblokApi
     return { data: null };
   });
 
+const { positionAbsolute = "true" } = Astro.props
 const footer = data.story.content;
 ---
 
-<footer class="f2-footer">
+<footer class:list={["f2-footer", {positionAbsolute: positionAbsolute}]}>
   <p>{footer.copyright}</p>
   <ArrowLink
     id="backToTop"
@@ -62,12 +64,6 @@ const footer = data.story.content;
     @media (--medium-viewport) {
       padding: 0 32px 24px;
     }
-    @media (--large-viewport) {
-      position: absolute;
-      bottom: 0;
-      left: 0px;
-      right: 0px;
-    }
     @media (--xlarge-viewport) {
       padding: 0 0 24px;
     }
@@ -77,5 +73,12 @@ const footer = data.story.content;
       color: var(--color-neutral-stonewhite);
       width: fit-content;
     }
+  }
+
+  .positionAbsolute { 
+    position: absolute;
+      bottom: 0;
+      left: 0px;
+      right: 0px;
   }
 </style>

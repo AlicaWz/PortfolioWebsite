@@ -56,6 +56,7 @@ const { data } = await storyblokApi.get(
   }
 )
 const story = data.story
+const pageType = story.content.component
 
 const metaData = {
   metaTitle: story.content.metaTitle ? story.content.metaTitle : "",
@@ -69,6 +70,6 @@ const metaData = {
 };
 ---
 
-<Layout meta={metaData} langSwitch={langSwitch} language={language}>
+<Layout meta={metaData} langSwitch={langSwitch} language={language} pageType={pageType}>
   <StoryblokComponent blok={story.content} />
 </Layout>

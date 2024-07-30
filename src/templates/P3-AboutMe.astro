@@ -1,0 +1,98 @@
+---
+/***
+ * P3 About me
+ * @description Page Type about me
+ */
+import C3Image, {
+  type ImageProps,
+} from "@components/modules/content/C3-Image.astro";
+import Footer from "@components/modules/function/F2-Footer.astro";
+import { storyblokEditable, type SbBlokData } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok, language } = Astro.props;
+---
+
+<div
+  id="content"
+  class="grid-container grid-margin"
+  {...storyblokEditable(blok)}
+>
+  <div class="col-span-2 lg-col-span-5 padding">
+    {
+      !!blok.image &&
+        blok.image.map((image: ImageProps) => (
+          <C3Image
+            gridSmall={{ start: 1, span: 2 }}
+            gridMedium={{ start: 1, span: 2 }}
+            gridLarge={{ start: 1, span: 5 }}
+            aspectRatio="3/4"
+            inferSize={true}
+            {...image}
+          />
+        ))
+    }
+  </div>
+  <div class="leftside col-span-4 md-col-span-2 lg-col-start-7 lg-col-span-6">
+    <div class="gradient-black top"></div>
+    <div class="scroll-area">
+      {
+        blok.modules?.map((blok: SbBlokData) => {
+          return <StoryblokComponent language={language} blok={blok} />;
+        })
+      }
+    <Footer positionAbsolute="false" /> 
+    </div>
+    <div class="gradient-black bottom"></div>
+  </div>
+</div>
+
+<style>
+  .grid-container {
+    padding: 0;
+  }
+
+  .padding {
+    padding: 96px 0;
+    margin: auto 0;
+  }
+
+  .leftside {
+    position: relative;
+    max-height: 100vh;
+
+    .scroll-area {
+      padding: 0 0 80px;
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+
+      @media (--large-viewport) {
+        overflow-y: scroll;
+        margin-top: 96px;
+        height: 100%;
+        padding-top: 200px;
+        gap: 96px;
+      }
+    }
+  }
+
+  .gradient-black {
+    position: absolute;
+    height: 150px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .top {
+    top: 96px;
+    rotate: 180deg;
+  }
+
+  .bottom {
+    bottom: 0;
+  }
+</style>
