@@ -6,6 +6,7 @@ export interface F2FooterProps {
   copyright: string;
   backToTopLabel: String;
   positionAbsolute: boolean;
+  scrollId: string
 }
 
 const storyblokApi = useStoryblokApi();
@@ -22,7 +23,7 @@ const { data } = await storyblokApi
     return { data: null };
   });
 
-const { positionAbsolute = "true" } = Astro.props
+const { positionAbsolute, scrollId } = Astro.props
 const footer = data.story.content;
 ---
 
@@ -30,7 +31,7 @@ const footer = data.story.content;
   <p>{footer.copyright}</p>
   <ArrowLink
     id="backToTop"
-    link={{ url: "" }}
+    link={{ url: "" || scrollId}}
     label={footer.backToTopLabel}
     labelPos="label-right"
     variant="arrow-up"
@@ -39,15 +40,23 @@ const footer = data.story.content;
   />
 </footer>
 
-<script>
+<script>  
   const backToTop = document.getElementById("backToTop");
+  const targetId = backToTop?.getAttribute("href")
 
   backToTop?.addEventListener("click", (e) => {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (!targetId) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   });
 </script>
 
@@ -57,16 +66,8 @@ const footer = data.story.content;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px 24px;
     max-width: 2220px;
     margin: 0 auto;
-
-    @media (--medium-viewport) {
-      padding: 0 32px 24px;
-    }
-    @media (--xlarge-viewport) {
-      padding: 0 0 24px;
-    }
 
     p {
       font-weight: 300;
@@ -76,9 +77,18 @@ const footer = data.story.content;
   }
 
   .positionAbsolute { 
-    position: absolute;
+    padding: 0 16px 24px;
+      @media (--medium-viewport) {
+      padding: 0 32px 24px;
+    }
+    @media (--large-viewport) {
+      position: absolute;
       bottom: 0;
       left: 0px;
       right: 0px;
+    }
+    @media (--xlarge-viewport) {
+      padding: 0 0 24px;
+    }
   }
 </style>

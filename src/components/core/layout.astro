@@ -47,7 +47,7 @@ const canonical = `${Astro.url.origin}${Astro.url.pathname}`
 		<main class="relative">
 			<slot />
 		</main>
-		{pageType !== "p3AboutMe" && <Footer langSwitch={langSwitch} language={language} />}
+		{pageType !== "p3AboutMe" && <Footer langSwitch={langSwitch} language={language} positionAbsolute/>}
 		<style>
 			:root {
 				--currentViewport: 'small';

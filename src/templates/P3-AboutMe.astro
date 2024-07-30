@@ -36,12 +36,13 @@ const { blok, language } = Astro.props;
   <div class="leftside col-span-4 md-col-span-2 lg-col-start-7 lg-col-span-6">
     <div class="gradient-black top"></div>
     <div class="scroll-area">
+      <div id="scroll-to-top"></div>
       {
         blok.modules?.map((blok: SbBlokData) => {
           return <StoryblokComponent language={language} blok={blok} />;
         })
       }
-    <Footer positionAbsolute="false" /> 
+    <Footer scrollId="scroll-to-top" /> 
     </div>
     <div class="gradient-black bottom"></div>
   </div>
@@ -60,12 +61,14 @@ const { blok, language } = Astro.props;
   .leftside {
     position: relative;
     max-height: 100vh;
+    overflow: hidden;
 
     .scroll-area {
       padding: 0 0 80px;
       ::-webkit-scrollbar {
         display: none;
       }
+      scrollbar-width: none;
       display: flex;
       flex-direction: column;
       gap: 80px;
@@ -74,7 +77,7 @@ const { blok, language } = Astro.props;
         overflow-y: scroll;
         margin-top: 96px;
         height: 100%;
-        padding-top: 200px;
+        padding: 200px 0 250px;
         gap: 96px;
       }
     }
