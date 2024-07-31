@@ -26,6 +26,7 @@ export default defineConfig({
         c21Text: 'components/modules/content/C2.1-Text',
         c3Image: 'components/modules/content/C3-Image',
         c4Numbers: 'components/modules/content/C4-Numbers',
+        c5Timeline: 'components/modules/content/C5-Timeline',
         t2Overview: 'components/modules/teaser/T2-Overview'
       },
       apiOptions: {

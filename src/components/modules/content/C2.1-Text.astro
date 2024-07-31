@@ -9,6 +9,7 @@ import type {
 export interface C2_1TextProps extends IComponentDefaults {
   theme: "default" | "light-theme";
   headline: string;
+  textalignment: "left" | "center";
   copy: RichtextStoryblok;
   button?: ButtonProps;
 
@@ -21,6 +22,8 @@ export interface Props {
 const { blok } = Astro.props;
 const { headline, button } = blok;
 const copy = renderRichText(blok.copy);
+
+console.log("Blok", blok)
 ---
 
 <section
@@ -33,3 +36,14 @@ const copy = renderRichText(blok.copy);
   {!!copy && <Fragment set:html={copy} />}
   {!!button?.href && <Button {...button}/>}
 </section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    .light-theme {
+      background-color: var(--color-neutral-white);
+    }
+  }
+</style>

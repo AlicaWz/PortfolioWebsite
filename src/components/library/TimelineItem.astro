@@ -1,0 +1,73 @@
+---
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import type { IComponentDefaults, RichtextStoryblok } from "@system/utils/types";
+
+export interface TimelineItemProps {
+    theme: "default" | "light-theme";
+    tag: string
+    copy: RichtextStoryblok
+}
+
+const { tag } = Astro.props;
+const copy = renderRichText(Astro.props.copy);
+---
+
+<div class="timeline-item">
+    <div class="timeline">
+        <div class="circle"></div>
+        <div class="line"></div>
+    </div>
+    <div class="content-box">
+        <div class="tag">{tag}</div>
+        {!!copy && <Fragment set:html={copy} />}
+    </div>
+</div>
+
+<style>
+    .timeline-item {
+        display: flex;
+        width: 100%;
+        gap: 8px
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .line {
+        background-color: var(--color-white);
+        width: 3px;
+        height: 100%;
+    }
+
+    .circle {
+        background-color: var(--color-white);
+        height: 16px;
+        width: 16px;
+        border-radius: 50px;
+    }
+
+    .content-box {
+        position: relative;
+        width: 100%;
+        background-color: var(--color-neutral-stonegrey);
+        border-radius: 24px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .tag {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        color: var(--color-primary-purple);
+        font-weight: 700;
+    }
+    
+
+</style>
+
