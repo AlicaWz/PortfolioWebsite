@@ -1,7 +1,7 @@
 import { renderers } from './renderers.mjs';
-import { l as levels, g as getEventPrefix, e as ensure404Route, d as default404Instance, D as DEFAULT_404_ROUTE, L as Logger, A as AstroIntegrationLogger, m as manifest } from './chunks/_@astrojs-manifest_Dqb5dXSz.mjs';
+import { l as levels, g as getEventPrefix, e as ensure404Route, d as default404Instance, D as DEFAULT_404_ROUTE, L as Logger, A as AstroIntegrationLogger, m as manifest } from './chunks/_@astrojs-manifest__2f4DACW.mjs';
 import { A as AstroError, q as i18nNoLocaleFoundInPath, s as appendForwardSlash, t as joinPaths, R as ResponseSentError, u as MiddlewareNoDataOrNextCalled, v as MiddlewareNotAResponse, G as GetStaticPathsRequired, w as InvalidGetStaticPathsReturn, x as InvalidGetStaticPathsEntry, y as GetStaticPathsExpectedParams, z as GetStaticPathsInvalidRouteParam, B as trimSlashes, P as PageNumberParamNotFound, C as NoMatchingStaticPathFound, H as PrerenderDynamicEndpointPathCollide, J as ReservedSlotName, L as LocalsNotAnObject, K as PrerenderClientAddressNotAvailable, Q as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, T as RewriteWithBodyUsed, U as AstroResponseHeadersReassigned, V as fileExtension, W as slash$1, X as prependForwardSlash, Y as removeTrailingForwardSlash } from './chunks/astro/assets-service_DK7A0Y1H.mjs';
-import { R as ROUTE_TYPE_HEADER, g as REROUTE_DIRECTIVE_HEADER, h as createSlotValueFromString, r as renderTemplate, b as renderComponent, D as DEFAULT_404_COMPONENT, i as renderSlotToString, j as renderJSX, k as chunkToString, l as isRenderInstruction, n as clientLocalsSymbol, o as clientAddressSymbol$1, p as renderPage, q as REWRITE_DIRECTIVE_HEADER_KEY, t as REWRITE_DIRECTIVE_HEADER_VALUE, v as renderEndpoint, A as ASTRO_VERSION, w as responseSentSymbol$1, x as REROUTABLE_STATUS_CODES, y as commonjsGlobal } from './chunks/astro/server_nfe5mw5Y.mjs';
+import { R as ROUTE_TYPE_HEADER, f as REROUTE_DIRECTIVE_HEADER, g as createSlotValueFromString, r as renderTemplate, a as renderComponent, D as DEFAULT_404_COMPONENT, h as renderSlotToString, i as renderJSX, j as chunkToString, k as isRenderInstruction, l as clientLocalsSymbol, n as clientAddressSymbol$1, o as renderPage, p as REWRITE_DIRECTIVE_HEADER_KEY, q as REWRITE_DIRECTIVE_HEADER_VALUE, t as renderEndpoint, A as ASTRO_VERSION, v as responseSentSymbol$1, w as REROUTABLE_STATUS_CODES, x as commonjsGlobal } from './chunks/astro/server_tb-IB4G1.mjs';
 import require$$1 from 'os';
 import require$$0 from 'path';
 import require$$0$1 from 'util';
@@ -9551,7 +9551,7 @@ const _manifest = Object.assign(manifest, {
     middleware: onRequest
 });
 const _args = {
-    "middlewareSecret": "68193886-e132-447e-a57c-1acea5bfc74c",
+    "middlewareSecret": "a0cec369-b366-4315-b56e-ac34e16c9020",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);
