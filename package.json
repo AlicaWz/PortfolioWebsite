@@ -19,6 +19,7 @@
     "astro": "^4.12.2",
     "astro-icon": "^1.1.0",
     "embla-carousel": "^8.1.7",
+    "node-cache": "^5.1.2",
     "vite": "^5.3.5"
   },
   "devDependencies": {

@@ -1,0 +1,26 @@
+.c2-text {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 24px 64px;
+    border-radius: 24px;
+    gap: 24px;
+    background-color: var(--color-neutral-stonegrey);
+
+    .light-theme {
+      background-color: var(--color-neutral-white);
+    }
+  }
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-center {
+    text-align: center;
+  }

@@ -1,0 +1,43 @@
+---
+export type Props = {
+  image: BASIC.AssetStoryblok;
+  mobileImage?: BASIC.AssetStoryblok;
+  pictureClass?: string;
+  imgClass?: string
+  alt: string;
+  lazy?: boolean;
+  aspectRatio?: "1/1" | "16/9" | "9/16" | "4/3" | "3/4";
+};
+
+// Read breakpoint from css file server side
+const breakpoints = Astro.locals.breakpoints;
+
+const {
+  image,
+  mobileImage,
+  alt,
+  pictureClass,
+  imgClass,
+  lazy = true,
+  aspectRatio,
+  ...rest
+} = Astro.props;
+
+const mobileSrc = mobileImage
+  ? `${mobileImage.filename}/m/580x0/filters:format(webp)`
+  : `${image.filename}/m/580x0/filters:format(webp)`;
+const imgSrc = `${image.filename}/m/1920x0/filters:format(webp)`;
+---
+
+<picture {...rest} class:list={[pictureClass]}>
+  <source media={`(max-width: ${breakpoints.sm}px)`} srcset={mobileSrc} />
+  <img
+    {...rest}
+    src={imgSrc}
+    alt={alt}
+    width={image.width}
+    height={image.height}
+    loading={lazy ? "lazy" : undefined}
+    class:list={[imgClass, aspectRatio]}
+  />
+</picture>

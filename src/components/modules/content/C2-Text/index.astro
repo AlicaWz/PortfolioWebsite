@@ -5,11 +5,12 @@ import ArrowLink, {
 import { renderRichText, storyblokEditable, type SbBlokData } from "@storyblok/astro";
 
 export interface C2TextProps extends BASIC.IComponentDefaults {
-  theme: "default" | "light-theme";
-  headline: string;
-  copy: BASIC.RichtextStoryblok;
-  textalignment: "left" | "center";
-  seeAllLink: ArrowLinkProps[];
+  theme?: "default" | "light-theme";
+  headline?: string;
+  copy?: BASIC.RichtextStoryblok;
+  textalignment?: "left" | "center";
+  seeAllLink?: ArrowLinkProps[];
+  width?: string;
 }
 
 export interface Props {
@@ -17,19 +18,19 @@ export interface Props {
 }
 
 const { blok } = Astro.props;
-const { headline, textalignment, seeAllLink } = blok;
+const { headline, textalignment, width, seeAllLink } = blok;
 
 const copy = renderRichText(blok.copy) || "";
 ---
 
 <section
   aria-label="Text"
-  class={`c2-text col-span-4 md-col-span-2 lg-col-span-6`}
+  class:list={["c2-text", width === "half" && "col-span-4 md-col-span-2 lg-col-span-6", width === "full" && "col-span-4 md-col-span-4 lg-col-span-12"]}
   {...storyblokEditable(blok)}
   id={blok._uid}
 >
   <div class="heading">
-    <h3>{headline}</h3>
+    <h2>{headline}</h2>
     {
       !!seeAllLink &&
         seeAllLink.map((link) => (
@@ -48,30 +49,5 @@ const copy = renderRichText(blok.copy) || "";
 </section>
 
 <style>
-  section {
-    display: flex;
-    flex-direction: column;
-    padding: 24px;
-    border-radius: 24px;
-    gap: 24px;
-    background-color: var(--color-neutral-stonegrey);
-
-    .light-theme {
-      background-color: var(--color-neutral-white);
-    }
-  }
-
-  .heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .text-left {
-    text-align: left;
-  }
-
-  .text-center {
-    text-align: center;
-  }
+	@import './index.css';
 </style>

@@ -1,0 +1,101 @@
+---
+import Button, { type ButtonProps } from "@components/library/Button.astro";
+import IconButton, {
+  type IconButtonProps,
+} from "@components/library/IconButton.astro";
+import type { ImageProps } from "@components/modules/content/C3-Image/index.astro";
+import C3Image from "@components/modules/content/C3-Image/index.astro";
+import Tag, { type TagProps } from "@components/library/Tag.astro";
+import {
+  renderRichText,
+  storyblokEditable,
+  type SbBlokData,
+} from "@storyblok/astro";
+import { map } from "astro/zod";
+
+export interface C1StageProps extends BASIC.IComponentDefaults {
+  tags: TagProps[];
+  headline: string;
+  copy: BASIC.RichtextStoryblok;
+  contactButton: ButtonProps[];
+  linkedInButton: IconButtonProps[];
+  image: ImageProps[];
+  aboutMeButton: ButtonProps[];
+  innergrid: boolean;
+  halfWidth: boolean;
+}
+
+export interface Props {
+  blok: SbBlokData & C1StageProps;
+}
+
+const { blok } = Astro.props;
+const {
+  tags,
+  headline,
+  contactButton,
+  linkedInButton,
+  aboutMeButton,
+  image,
+  innergrid = "false",
+  halfWidth,
+} = blok;
+
+const copy = renderRichText(blok.copy) || "";
+
+const currentUrl = Astro.url.pathname;
+---
+
+<section
+  aria-label="Stage"
+  class:list={[
+    "c1-stage col-span-4 lg-col-span-10",
+    { innergrid: innergrid, "lg-col-span-6": halfWidth },
+  ]}
+  {...storyblokEditable(blok)}
+  id={blok._uid}
+>
+  <div
+    class="lg-leftside col-span-4 md-col-span-2 lg-col-span-6"
+    id="stage-tags"
+  >
+    {
+      !!tags && (
+        <div class="tags">
+          {tags.map((tag) => (
+            <Tag {...tag} />
+          ))}
+        </div>
+      )
+    }
+    <h1>{headline}</h1>
+    {!!copy && <Fragment set:html={copy} />}
+    <div class="button-wrapper">
+      {!!contactButton && contactButton.map((button) => <Button {...button} />)}
+      {
+        !!linkedInButton &&
+          linkedInButton.map((linkedInButton) => (
+            <IconButton {...linkedInButton} />
+          ))
+      }
+    </div>
+  </div>
+  <div class="lg-rightside col-span-4 md-col-span-2 lg-col-span-4">
+    {
+      !!image &&
+        image.map((image: ImageProps) => (
+          <C3Image
+            {...image}
+          />
+        ))
+    }
+    {
+      currentUrl === "/" && aboutMeButton && 
+      aboutMeButton.map((button) => <Button {...button} fullWidth />)
+    }
+  </div>
+</section>
+
+<style>
+  @import "./index.css";
+</style>

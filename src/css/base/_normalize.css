@@ -10,7 +10,6 @@ body {
 
   @media (--large-viewport) {
     height: 100vh;
-    overflow: hidden;
   }
 }
 

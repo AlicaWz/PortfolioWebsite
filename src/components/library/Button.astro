@@ -1,52 +1,94 @@
 ---
-
 export interface ButtonProps {
-    label: string;
-    variant: "primary" | "secondary";
-    href: BASIC.LinkProps;
-    target: string;
+  label?: string;
+  variant?: "primary" | "secondary";
+  color?: "purple" | "grey";
+  href?: BASIC.LinkProps | string;
+  target?: string;
+  fullWidth?: boolean;
 }
 
-const { label, variant = "primary", href, target } = Astro.props
+const {
+  label,
+  variant = "primary",
+  href,
+  target,
+  color = "purple",
+  fullWidth,
+} = Astro.props;
 ---
 
-<a class:list={[variant]} type="button" href={href.linktype === "email" ? `mailto:${href.email}` : href.url } target={target}>
-    {label}
+<a
+  class:list={[variant, color, fullWidth ? "fullWidth" : ""]}
+  type="button"
+  href={href.linktype === "email" ? `mailto:${href.email}` : `/${href.cached_url}`}
+  target={target}
+>
+  {label}
 </a>
 
 <style>
-    a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 24px;
-        height: 48px;
-        border-radius: 12px;
-        color: var(--color-white);
-        min-width: 240px;;
-        width: fit-content;
-        font-weight: bold;
-        text-decoration: none;
-        text-transform: lowercase;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    height: 48px;
+    min-height: 48px;
+    border-radius: 12px;
+    color: var(--color-white);
+    min-width: 240px;
+    width: fit-content;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+
+  .fullWidth {
+    width: 100%;
+  }
+
+  .primary {
+    &.purple {
+      background-color: var(--color-primary-purple);
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--color-secondary-purple);
+      }
     }
 
-    .primary {
-        background-color: var(--color-primary-purple);
+    &.grey {
+      background-color: var(--color-neutral-stonegrey);
 
-        &:hover {
-            cursor: pointer;
-            background-color: var(--color-secondary-purple);
-        }
+      &:hover {
+        cursor: pointer;
+        filter: brightness(1.1);
+      }
+    }
+  }
+
+  .secondary {
+    &.purple {
+      border: 2px solid var(--color-primary-purple);
+      color: var(--color-primary-purple);
+
+      &:hover {
+        cursor: pointer;
+        border-color: var(--color-secondary-purple);
+        color: var(--color-secondary-purple);
+      }
     }
 
-    .secondary {
-        border: 2px solid var(--color-primary-purple);
-        color: var(--color-primary-purple);
+    &.grey {
+      border: 2px solid var(--color-neutral-stonegrey);
+      color: var(--color-neutral-stonegrey);
 
-        &:hover {
-            cursor: pointer;
-            border-color: var(--color-secondary-purple);
-            color: var(--color-secondary-purple);
-        }
+      &:hover {
+        cursor: pointer;
+        border-color: var(--color-neutral-stonegrey);
+        color: var(--color-neutral-stonegrey);
+      }
     }
+  }
 </style>
