@@ -2,22 +2,18 @@
 import ArrowLink, {
   type ArrowLinkProps,
 } from "@components/library/ArrowLink.astro";
-import type {
-  IComponentDefaults,
-  RichtextStoryblok,
-} from "@system/utils/types";
-import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import { renderRichText, storyblokEditable, type SbBlokData } from "@storyblok/astro";
 
-export interface C2TextProps extends IComponentDefaults {
+export interface C2TextProps extends BASIC.IComponentDefaults {
   theme: "default" | "light-theme";
   headline: string;
-  copy: RichtextStoryblok;
+  copy: BASIC.RichtextStoryblok;
   textalignment: "left" | "center";
   seeAllLink: ArrowLinkProps[];
 }
 
 export interface Props {
-  blok: C2TextProps;
+  blok: SbBlokData & C2TextProps;
 }
 
 const { blok } = Astro.props;

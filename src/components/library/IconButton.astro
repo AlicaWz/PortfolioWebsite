@@ -1,12 +1,11 @@
 ---
-import type { AssetStoryblok, LinktStoryblok } from "@system/utils/types";
 import { Image } from "astro:assets";
 
 export interface IconButtonProps {
-    icon: AssetStoryblok;
+    icon: BASIC.AssetStoryblok;
     variant: "primary" | "secondary";
     theme: "default" | "light"
-    href: LinktStoryblok;
+    href: BASIC.LinkProps;
     target: string;
 }
 

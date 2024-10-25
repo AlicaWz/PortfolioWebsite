@@ -6,16 +6,12 @@ import IconButton, {
 import type { ImageProps } from "@components/modules/content/C3-Image.astro";
 import C3Image from "@components/modules/content/C3-Image.astro";
 import Tag, { type TagProps } from "@components/library/Tag.astro";
-import type {
-  IComponentDefaults,
-  RichtextStoryblok,
-} from "@system/utils/types";
-import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import { renderRichText, storyblokEditable, type SbBlokData } from "@storyblok/astro";
 
-export interface C1StageProps extends IComponentDefaults {
+export interface C1StageProps extends BASIC.IComponentDefaults {
   tags: TagProps[];
   headline: string;
-  copy: RichtextStoryblok;
+  copy: BASIC.RichtextStoryblok;
   button: ButtonProps[];
   linkedInButton: IconButtonProps[];
   image: ImageProps[];
@@ -24,7 +20,7 @@ export interface C1StageProps extends IComponentDefaults {
 }
 
 export interface Props {
-  blok: C1StageProps;
+  blok: SbBlokData & C1StageProps;
 }
 
 const { blok } = Astro.props;

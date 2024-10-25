@@ -1,9 +1,8 @@
 ---
-import type { LinktStoryblok } from "@system/utils/types";
 import { Icon } from "astro-icon/components";
 
 export interface ArrowLinkProps {
-  link?: LinktStoryblok;
+  link?: BASIC.LinkProps;
   id?: string;
   label: string;
   variant: "arrow-right" | "arrow-left" | "arrow-up" | "arrow-down";

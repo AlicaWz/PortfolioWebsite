@@ -1,14 +1,14 @@
 ---
 import NumbersItem, { type NumbersItemProps } from "@components/library/NumbersItem.astro";
-import type { IComponentDefaults } from "@system/utils/types";
+import { storyblokEditable, type SbBlokData } from "@storyblok/astro";
 
 
-export interface C4NumbersProps extends IComponentDefaults {
+export interface C4NumbersProps extends BASIC.IComponentDefaults {
     items: NumbersItemProps[]
 }
 
 export interface Props {
-    blok: C4NumbersProps;
+    blok: SbBlokData & C4NumbersProps;
 }
 
 const { blok } = Astro.props;
@@ -20,6 +20,7 @@ const { items } = blok;
     aria-label="Numbers"
     class="c4-numbers col-span-4 lg-col-start-11 lg-col-span-2"
     id={blok._uid}
+    {...storyblokEditable(blok)}
 >
     <div class="numbers">
         {items.map((item) => (

@@ -1,22 +1,18 @@
 ---
 import Button, { type ButtonProps } from "@components/library/Button.astro";
-import { renderRichText, storyblokEditable } from "@storyblok/astro";
-import type {
-  IComponentDefaults,
-  RichtextStoryblok,
-} from "@system/utils/types";
+import { renderRichText, storyblokEditable, type SbBlokData } from "@storyblok/astro";
 
-export interface C2_1TextProps extends IComponentDefaults {
+export interface C2_1TextProps extends BASIC.IComponentDefaults {
   theme: "default" | "light-theme";
   headline: string;
   textalignment: "left" | "center";
-  copy: RichtextStoryblok;
+  copy: BASIC.RichtextStoryblok;
   button?: ButtonProps;
 
 }
 
 export interface Props {
-  blok: C2_1TextProps;
+  blok: SbBlokData & C2_1TextProps;
 }
 
 const { blok } = Astro.props;

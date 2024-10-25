@@ -1,12 +1,11 @@
 ---
-import type { AssetStoryblok } from "@system/utils/types";
 import { Image } from "astro:assets";
 
 export interface ImageProps {
     gridSmall?: { start: number, span: number};
     gridMedium?: { start: number, span: number};
     gridLarge?: { start: number, span: number};
-    image: AssetStoryblok
+    image: BASIC.AssetStoryblok
     inferSize?: boolean;
     backgroundColor: "Red" | "Blue" | "Green" | "Yellow" | "Purple";
     aspectRatio?: "1/1" | "16/9" |"9/16" | "4/3" | "3/4"; 

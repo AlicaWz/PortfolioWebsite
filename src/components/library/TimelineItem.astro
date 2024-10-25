@@ -1,11 +1,10 @@
 ---
-import { renderRichText, storyblokEditable } from "@storyblok/astro";
-import type { IComponentDefaults, RichtextStoryblok } from "@system/utils/types";
+import { renderRichText } from "@storyblok/astro";
 
 export interface TimelineItemProps {
     theme: "default" | "light-theme";
     tag: string
-    copy: RichtextStoryblok
+    copy: BASIC.RichtextStoryblok
 }
 
 const { tag } = Astro.props;
