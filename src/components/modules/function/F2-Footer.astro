@@ -1,12 +1,12 @@
 ---
 import { useStoryblokApi } from "@storyblok/astro";
-import ArrowLink from "@components/library/ArrowLink.astro";
+import ArrowLink from "@components/elements/ArrowLink.astro";
 
 export interface F2FooterProps {
   copyright: string;
   backToTopLabel: String;
-  positionAbsolute: boolean;
-  scrollId: string
+  scrollId: string;
+  padding?: boolean;
 }
 
 const storyblokApi = useStoryblokApi();
@@ -23,15 +23,17 @@ const { data } = await storyblokApi
     return { data: null };
   });
 
-const { positionAbsolute, scrollId } = Astro.props
+const { scrollId, padding } = Astro.props;
 const footer = data.story.content;
+
+console.log("props", Astro.props);
 ---
 
-<footer class:list={["f2-footer", {positionAbsolute: positionAbsolute}]}>
+<footer class:list={["f2-footer", padding ? "padding" : ""]}>
   <p>{footer.copyright}</p>
   <ArrowLink
     id="backToTop"
-    link={{ url: "" || scrollId}}
+    link={{ url: scrollId ? `#${scrollId}` : "" }}
     label={footer.backToTopLabel}
     labelPos="label-right"
     variant="arrow-up"
@@ -40,9 +42,9 @@ const footer = data.story.content;
   />
 </footer>
 
-<script>  
+<script>
   const backToTop = document.getElementById("backToTop");
-  const targetId = backToTop?.getAttribute("href")
+  const targetId = backToTop?.getAttribute("href");
 
   backToTop?.addEventListener("click", (e) => {
     e.preventDefault();
@@ -68,20 +70,23 @@ const footer = data.story.content;
     align-items: center;
     max-width: 2220px;
     margin: 0 auto;
-    padding:  0 16px 16px;
-
-    @media (--medium-viewport) {
-      padding: 0 32px 24px;
-    }
 
     p {
       font-weight: 300;
       color: var(--color-neutral-stonewhite);
       width: fit-content;
     }
+
+    .padding {
+      padding: 0 16px 16px;
+
+      @media (--medium-viewport) {
+        padding: 0 32px 24px;
+      }
+    }
   }
 
-  .positionAbsolute { 
+  /* .positionAbsolute { 
     padding: 0 16px 24px;
       @media (--medium-viewport) {
       padding: 0 32px 24px;
@@ -95,5 +100,5 @@ const footer = data.story.content;
     @media (--xlarge-viewport) {
       padding: 0 0 24px;
     }
-  }
+  } */
 </style>

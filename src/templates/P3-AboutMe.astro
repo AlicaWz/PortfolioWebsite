@@ -1,7 +1,7 @@
 ---
 /***
  * P3 About me
- * @description Page Type about me
+ * @description Page Template for About me Page
  */
 import C3Image, {
   type ImageProps,
@@ -15,7 +15,7 @@ const { blok, language } = Astro.props;
 
 <div
   id="content"
-  class="grid-container grid-margin"
+  class="p3-about-me grid-container grid-margin grid-no-paddin"
   {...storyblokEditable(blok)}
 >
   <div class="col-span-2 lg-col-span-5 padding">
@@ -33,10 +33,10 @@ const { blok, language } = Astro.props;
         ))
     }
   </div>
-  <div class="leftside col-span-4 md-col-span-2 lg-col-start-7 lg-col-span-6">
+  <div class="rightside col-span-4 md-col-span-2 lg-col-start-7 lg-col-span-6">
     <div class="gradient-black top"></div>
     <div class="scroll-area">
-      <div id="scroll-to-top"></div>
+      <!-- <div id="scroll-to-top"></div> -->
       {
         blok.modules?.map((blok: SbBlokData) => {
           return <StoryblokComponent language={language} blok={blok} />;
@@ -44,58 +44,6 @@ const { blok, language } = Astro.props;
       }
     <Footer scrollId="scroll-to-top" /> 
     </div>
-    <div class="gradient-black bottom"></div>
+    <!-- <div class="gradient-black bottom"></div> -->
   </div>
 </div>
-
-<style>
-  .grid-container {
-    padding: 0;
-  }
-
-  .padding {
-    padding: 96px 0;
-    margin: auto 0;
-  }
-
-  .leftside {
-    position: relative;
-    max-height: 100vh;
-    overflow: hidden;
-
-    .scroll-area {
-      padding: 0 0 80px;
-      ::-webkit-scrollbar {
-        display: none;
-      }
-      scrollbar-width: none;
-      display: flex;
-      flex-direction: column;
-      gap: 80px;
-
-      @media (--large-viewport) {
-        overflow-y: scroll;
-        margin-top: 96px;
-        height: 100%;
-        padding: 200px 0 250px;
-        gap: 96px;
-      }
-    }
-  }
-
-  .gradient-black {
-    position: absolute;
-    height: 150px;
-    width: 100%;
-    z-index: 1;
-  }
-
-  .top {
-    top: 96px;
-    rotate: 180deg;
-  }
-
-  .bottom {
-    bottom: 0;
-  }
-</style>

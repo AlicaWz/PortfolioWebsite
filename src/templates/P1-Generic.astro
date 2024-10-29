@@ -3,7 +3,8 @@
  * P1 Default Page Template
  * @description Default page template for content pages
  */
- import { storyblokEditable, type SbBlokData } from "@storyblok/astro"
+ import F2Footer from "@components/modules/function/F2-Footer.astro"
+import { storyblokEditable, type SbBlokData } from "@storyblok/astro"
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro"
 
 const { blok, language } = Astro.props
@@ -11,7 +12,7 @@ const { blok, language } = Astro.props
 
 <div
   id="content"
-  class="grid-container grid-margin"
+  class="grid-container grid-margin grid-padding"
   {...storyblokEditable(blok)}>
   {
     blok.modules?.map((blok: SbBlokData) => {

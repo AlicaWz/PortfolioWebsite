@@ -1,29 +1,4 @@
----
-import { languages } from "@system/utils/langs";
-import { Icon } from "astro-icon/components";
-const { language, langSwitch } = Astro.props;
----
-
-<header class="f1-header" id="f1Header">
-  <nav>
-    <a class="theme-switch"><Icon name="sun-path" height={32} width={32} /></a>
-    <span>
-      {
-        languages.map((lang) => (
-          <a
-            class:list={`lang-switch ${lang === language ? "active" : ""}`}
-            href={langSwitch[lang]}
-          >
-            {lang === "default" ? "en" : lang}
-          </a>
-        ))
-      }
-    </span>
-  </nav>
-</header>
-
-<style>
-  .f1-header {
+.f1-header {
     position: relative;
     width: 100%;
     z-index: 5;
@@ -77,4 +52,3 @@ const { language, langSwitch } = Astro.props;
       }
     }
   }
-</style>

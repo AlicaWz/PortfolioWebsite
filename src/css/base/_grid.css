@@ -2,6 +2,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+}
+
+.grid-padding {
   padding: 80px 0 32px;
 }
 
@@ -26,9 +29,12 @@
 
 @media (--large-viewport) {
   .grid-container {
-    padding: 80px 0;
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
+  }
+
+  .grid-padding {
+    padding: 80px 0;
   }
 }
 

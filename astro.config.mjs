@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 import node from '@astrojs/node';
+import react from '@astrojs/react'
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import storyblok from '@storyblok/astro';
@@ -14,6 +15,7 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     icon(), 
+    react(),
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
       bridge: env.STORYBLOK_IS_PREVIEW === 'yes',

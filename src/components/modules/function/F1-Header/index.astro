@@ -1,0 +1,38 @@
+---
+import { languages } from "@system/utils/langs";
+import { Icon } from "astro-icon/components";
+import { ThemeSwitch } from "@components/elements/ThemeSwitch";
+
+const { language, langSwitch } = Astro.props;
+---
+
+<header class="f1-header" id="f1Header">
+  <nav>
+    <ThemeSwitch client:load />
+    <span>
+      {
+        languages.map((lang) => (
+          <a
+            class:list={`lang-switch ${lang === language ? "active" : ""}`}
+            href={langSwitch[lang]}
+          >
+            {lang === "default" ? "en" : lang}
+          </a>
+        ))
+      }
+    </span>
+  </nav>
+</header>
+
+<script>
+  const themeSwitch = document.getElementById("theme-switch");
+  const body = document.querySelector("body");
+
+  if (body) {
+    body.dataset.theme = body.dataset.theme === "light" ? "dark" : "light";
+  }
+</script>
+
+<style>
+  @import "./index.css";
+</style>
