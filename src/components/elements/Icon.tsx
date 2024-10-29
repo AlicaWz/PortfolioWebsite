@@ -1,9 +1,11 @@
 import { ReactSVG } from 'react-svg'
 
 import Sun from '@icons/sun.svg'
+import FilledSun from '@icons/sun-filled.svg'
 
 export const iconComponents: { [key in any]: any } = {
-    Sun
+    Sun,
+    FilledSun
 }
 
 export interface IconProps {

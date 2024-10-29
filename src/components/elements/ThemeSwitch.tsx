@@ -16,7 +16,7 @@ export const ThemeSwitch = () => {
 
     return (
         <div className="theme-switch">
-            <Icon name="Sun" class="icon" />
+            <Icon name={theme === 'dark' ? "Sun" : "FilledSun"} class="icon" />
             <input type="checkbox" onChange={handleChange} checked={theme === 'dark'} />
 
         </div>

@@ -91,7 +91,7 @@ const currentUrl = Astro.url.pathname;
     }
     {
       currentUrl === "/" && aboutMeButton && 
-      aboutMeButton.map((button) => <Button {...button} fullWidth />)
+      aboutMeButton.map((button) => <Button {...button} />)
     }
   </div>
 </section>
