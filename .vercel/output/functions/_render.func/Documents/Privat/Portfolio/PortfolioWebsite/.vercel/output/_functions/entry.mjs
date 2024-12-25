@@ -2309,7 +2309,7 @@ const _manifest = Object.assign(manifest, {
     middleware: onRequest
 });
 const _args = {
-    "middlewareSecret": "d29be87c-c29a-43db-8c09-fa5d6b0fb36a",
+    "middlewareSecret": "495d03f5-3046-4217-bb39-ec64902d4f56",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);

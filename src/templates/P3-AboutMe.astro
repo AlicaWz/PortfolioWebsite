@@ -9,9 +9,12 @@ import C3Image, {
 } from "@components/modules/content/C3-Image/index.astro";
 import { storyblokEditable, type SbBlokData } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-import C6SkillProfile from "@components/modules/content/C6-SkillProfile/index.astro";
+
 
 const { blok, language } = Astro.props;
+
+const url = Astro.url.pathname;
+const isGerman = url.includes("/de/");
 ---
 
 <div
@@ -22,8 +25,8 @@ const { blok, language } = Astro.props;
   <div class="col-span-4 md-col-span-2 lg-col-span-5 leftside">
     <ArrowLink
       variant="arrow-left"
-      label="Back to home"
-      link="/"
+      label={ !isGerman ? "Back" : "Zurück"}
+      link={ !isGerman ? "/" : "/de/"}
       class="col-span-4 lg-col-span-12"
       arrowPos="leftSide"
       noLabelWidth

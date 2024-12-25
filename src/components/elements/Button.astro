@@ -24,7 +24,7 @@ const {
 <a
   class:list={["btn", variant, color, fullWidth ? "fullWidth" : ""]}
   type="button"
-  href={href.linktype === "email" ? `mailto:${href.email}` : `/${href.cached_url}`}
+  href={href.linktype === "email" ? `mailto:${href.email}` : `${href.cached_url}`}
   target={target}
 >
   {label}

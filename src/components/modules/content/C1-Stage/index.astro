@@ -11,7 +11,6 @@ import {
   storyblokEditable,
   type SbBlokData,
 } from "@storyblok/astro";
-import { map } from "astro/zod";
 
 export interface C1StageProps extends BASIC.IComponentDefaults {
   tags: TagProps[];
@@ -42,8 +41,6 @@ const {
 } = blok;
 
 const copy = renderRichText(blok.copy) || "";
-
-const currentUrl = Astro.url.pathname;
 ---
 
 <section
@@ -90,7 +87,7 @@ const currentUrl = Astro.url.pathname;
         ))
     }
     {
-      currentUrl === "/" && aboutMeButton && 
+      aboutMeButton && 
       aboutMeButton.map((button) => <Button {...button} icon="arrow-right"/>)
     }
   </div>
