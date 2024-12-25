@@ -1,4 +1,5 @@
-import { A as AstroError, E as EndpointDidNotReturnAResponse, I as InvalidComponentArgs, a as AstroGlobUsedOutside, b as AstroGlobNoMatch, M as MissingMediaQueryDirective, N as NoMatchingImport, O as OnlyResponseCanBeReturned, R as ResponseSentError, c as NoMatchingRenderer, d as NoClientOnlyHint, e as NoClientEntrypoint } from './assets-service_DK7A0Y1H.mjs';
+import { A as AstroError, E as EndpointDidNotReturnAResponse, I as InvalidComponentArgs, a as AstroGlobUsedOutside, b as AstroGlobNoMatch, M as MissingMediaQueryDirective, N as NoMatchingImport, O as OnlyResponseCanBeReturned, R as ResponseSentError, c as NoMatchingRenderer, d as NoClientOnlyHint, e as NoClientEntrypoint } from './assets-service_g-g3lz6v.mjs';
+import 'cssesc';
 
 const ASTRO_VERSION = "4.12.2";
 const REROUTE_DIRECTIVE_HEADER = "X-Astro-Reroute";
@@ -10,8 +11,6 @@ const REROUTABLE_STATUS_CODES = [404, 500];
 const clientAddressSymbol = Symbol.for("astro.clientAddress");
 const clientLocalsSymbol = Symbol.for("astro.locals");
 const responseSentSymbol = Symbol.for("astro.responseSent");
-
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 let FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM, isTTY=true;
 if (typeof process !== 'undefined') {
@@ -2062,4 +2061,4 @@ function spreadAttributes(values = {}, _name, { class: scopedClassName } = {}) {
   return markHTMLString(output);
 }
 
-export { ASTRO_VERSION as A, red as B, yellow as C, DEFAULT_404_COMPONENT as D, dim as E, Fragment as F, blue as G, escape as H, ROUTE_TYPE_HEADER as R, addAttribute as a, renderComponent as b, createComponent as c, createAstro as d, renderHead as e, renderSlot as f, REROUTE_DIRECTIVE_HEADER as g, createSlotValueFromString as h, renderSlotToString as i, renderJSX as j, chunkToString as k, isRenderInstruction as l, maybeRenderHead as m, clientLocalsSymbol as n, clientAddressSymbol as o, renderPage as p, REWRITE_DIRECTIVE_HEADER_KEY as q, renderTemplate as r, spreadAttributes as s, REWRITE_DIRECTIVE_HEADER_VALUE as t, unescapeHTML as u, renderEndpoint as v, responseSentSymbol as w, REROUTABLE_STATUS_CODES as x, commonjsGlobal as y, bold as z };
+export { ASTRO_VERSION as A, yellow as B, dim as C, DEFAULT_404_COMPONENT as D, blue as E, Fragment as F, escape as G, ROUTE_TYPE_HEADER as R, renderComponent as a, addAttribute as b, createComponent as c, createAstro as d, renderHead as e, renderSlot as f, REROUTE_DIRECTIVE_HEADER as g, createSlotValueFromString as h, renderSlotToString as i, renderJSX as j, chunkToString as k, isRenderInstruction as l, maybeRenderHead as m, clientLocalsSymbol as n, clientAddressSymbol as o, renderPage as p, REWRITE_DIRECTIVE_HEADER_KEY as q, renderTemplate as r, spreadAttributes as s, REWRITE_DIRECTIVE_HEADER_VALUE as t, unescapeHTML as u, renderEndpoint as v, responseSentSymbol as w, REROUTABLE_STATUS_CODES as x, bold as y, red as z };

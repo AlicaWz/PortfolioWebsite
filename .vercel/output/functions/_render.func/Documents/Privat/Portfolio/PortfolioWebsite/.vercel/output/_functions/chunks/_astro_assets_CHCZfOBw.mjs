@@ -1,5 +1,5 @@
-import { A as AstroError, g as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, h as ExpectedImageOptions, j as ExpectedImage, k as ExpectedNotESMImage, r as resolveSrc, l as isRemoteImage, m as isESMImportedImage, n as isLocalService, D as DEFAULT_HASH_PROPS, o as InvalidImageService, p as ImageMissingAlt } from './astro/assets-service_DK7A0Y1H.mjs';
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as addAttribute, s as spreadAttributes, d as createAstro } from './astro/server_nfe5mw5Y.mjs';
+import { A as AstroError, g as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, h as ExpectedImageOptions, j as ExpectedImage, k as ExpectedNotESMImage, r as resolveSrc, l as isRemoteImage, m as isESMImportedImage, n as isLocalService, D as DEFAULT_HASH_PROPS, o as InvalidImageService, p as ImageMissingAlt } from './astro/assets-service_g-g3lz6v.mjs';
+import { c as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes, d as createAstro } from './astro/server_B4uVEw--.mjs';
 
 function isImageMetadata(src) {
   return src.fsPath && !("fsPath" in src);
@@ -839,7 +839,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './astro/assets-service_DK7A0Y1H.mjs'
+      './astro/assets-service_g-g3lz6v.mjs'
     ).then(n => n.Z).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -945,7 +945,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
     additionalAttributes.srcset = image.srcSet.attribute;
   }
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(additionalAttributes)}${spreadAttributes(image.attributes)}>`;
-}, "/Users/lissi/Documents/PortfolioWebsite/node_modules/.pnpm/astro@4.12.2_@types+node@20.14.12_typescript@5.5.4/node_modules/astro/components/Image.astro", void 0);
+}, "/Users/alica.wziontek/Documents/Privat/Portfolio/PortfolioWebsite/node_modules/.pnpm/astro@4.12.2_@types+node@20.14.12_typescript@5.5.4/node_modules/astro/components/Image.astro", void 0);
 
 const mimes = {
   "3g2": "video/3gpp2",
@@ -1448,7 +1448,7 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
     const srcsetAttribute = props.densities || !props.densities && !props.widths ? `${image.src}${image.srcSet.values.length > 0 ? ", " + image.srcSet.attribute : ""}` : image.srcSet.attribute;
     return renderTemplate`<source${addAttribute(srcsetAttribute, "srcset")}${addAttribute(lookup(image.options.format ?? image.src) ?? `image/${image.options.format}`, "type")}${spreadAttributes(sourceAdditionalAttributes)}>`;
   })} <img${addAttribute(fallbackImage.src, "src")}${spreadAttributes(imgAdditionalAttributes)}${spreadAttributes(fallbackImage.attributes)}> </picture>`;
-}, "/Users/lissi/Documents/PortfolioWebsite/node_modules/.pnpm/astro@4.12.2_@types+node@20.14.12_typescript@5.5.4/node_modules/astro/components/Picture.astro", void 0);
+}, "/Users/alica.wziontek/Documents/Privat/Portfolio/PortfolioWebsite/node_modules/.pnpm/astro@4.12.2_@types+node@20.14.12_typescript@5.5.4/node_modules/astro/components/Picture.astro", void 0);
 
 const imageConfig = {"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[]};
 					const getImage = async (options) => await getImage$1(options, imageConfig);

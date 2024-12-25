@@ -1,39 +1,45 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import node from '@astrojs/node';
-import react from '@astrojs/react'
-import icon from 'astro-icon';
-import { defineConfig } from 'astro/config';
-import storyblok from '@storyblok/astro';
-import { loadEnv } from 'vite';
-import vercel from '@astrojs/vercel/serverless';
+import node from "@astrojs/node";
+import react from "@astrojs/react";
+import icon from "astro-icon";
+import { defineConfig } from "astro/config";
+import storyblok from "@storyblok/astro";
+import { loadEnv } from "vite";
+import vercel from "@astrojs/vercel/serverless";
 
-const env = loadEnv('', process.cwd(), 'STORYBLOK');
+const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 export default defineConfig({
-  output: 'server',
+  output: "server",
   adapter: vercel(),
   integrations: [
-    icon(), 
+    icon(),
     react(),
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
-      bridge: env.STORYBLOK_IS_PREVIEW === 'yes',
+      bridge: env.STORYBLOK_IS_PREVIEW === "yes",
       enableFallbackComponent: true,
       components: {
-        p1Generic: 'templates/P1-Generic',
-        p3AboutMe: 'templates/P3-AboutMe',
-        c1Stage: 'components/modules/content/C1-Stage/index',
-        c2Text: 'components/modules/content/C2-Text/index', 
-        c21Text: 'components/modules/content/C2.1-Text/index',
-        c3Image: 'components/modules/content/C3-Image/index',
-        c4Numbers: 'components/modules/content/C4-Numbers/index',
-        c5Timeline: 'components/modules/content/C5-Timeline/index',
-        t2Overview: 'components/modules/teaser/T2-Overview'
+        p1Generic: "templates/P1-Generic",
+        p3AboutMe: "templates/P3-AboutMe",
+        c1Stage: "components/modules/content/C1-Stage/index",
+        c2Text: "components/modules/content/C2-Text/index",
+        c21Text: "components/modules/content/C2.1-Text/index",
+        c3Image: "components/modules/content/C3-Image/index",
+        c4Numbers: "components/modules/content/C4-Numbers/index",
+        c5Timeline: "components/modules/content/C5-Timeline/index",
+        t2Overview: "components/modules/teaser/T2-Overview",
       },
       apiOptions: {
-        region: 'eu'
-      }
-    })
-  ]
+        region: "eu",
+      },
+    }),
+  ],
+  // workaround: pnpm build failed without this for me
+  vite: {
+    ssr: {
+      noExternal: ["path-to-regexp"],
+    },
+  },
 });
