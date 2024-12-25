@@ -7,9 +7,9 @@ import ArrowLink from "@components/elements/ArrowLink.astro";
 import C3Image, {
   type ImageProps,
 } from "@components/modules/content/C3-Image/index.astro";
-import Footer from "@components/modules/function/F2-Footer.astro";
 import { storyblokEditable, type SbBlokData } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import C6SkillProfile from "@components/modules/content/C6-SkillProfile/index.astro";
 
 const { blok, language } = Astro.props;
 ---
@@ -19,56 +19,42 @@ const { blok, language } = Astro.props;
   class="p3-about-me grid-container grid-margin grid-no-paddin grid-max-height"
   {...storyblokEditable(blok)}
 >
-<ArrowLink
-  variant="arrow-left"
-  label="Back to home"
-  link="/"
-  class="back-to-home col-span-4 lg-col-span-12"
-  arrowPos="leftSide"
-  noLabelWidth
-/>
-  <div class="col-span-2 lg-col-span-5 padding">
+  <div class="col-span-4 md-col-span-2 lg-col-span-5 leftside">
+    <ArrowLink
+      variant="arrow-left"
+      label="Back to home"
+      link="/"
+      class="col-span-4 lg-col-span-12"
+      arrowPos="leftSide"
+      noLabelWidth
+    />
     {
       !!blok.image &&
         blok.image.map((image: ImageProps) => (
-          <C3Image
-            gridSmall={{ start: 1, span: 2 }}
-            gridMedium={{ start: 1, span: 2 }}
-            gridLarge={{ start: 1, span: 5 }}
-            aspectRatio="1/1"
-            inferSize={true}
-            {...image}
-          />
+          <div class="lg-center-image">
+            <C3Image
+              gridSmall={{ start: 1, span: 2 }}
+              gridMedium={{ start: 1, span: 2 }}
+              gridLarge={{ start: 1, span: 5 }}
+              aspectRatio="1/1"
+              inferSize={true}
+              {...image}
+              autoHeight
+            />
+          </div>
         ))
     }
   </div>
   <div class="rightside col-span-4 md-col-span-2 lg-col-start-7 lg-col-span-6">
-    <div class="gradient top"></div>
     <div class="scroll-area">
-      <!-- <div id="scroll-to-top"></div> -->
-      {
-        blok.modules?.map((blok: SbBlokData) => {
-          return <StoryblokComponent language={language} blok={blok} />;
-        })
-      }
-      <!-- <Footer scrollId="scroll-to-top" />  -->
+      <div class="content-wrapper">
+        {
+          blok.modules?.map((blok: SbBlokData) => {
+            return <StoryblokComponent language={language} blok={blok} />;
+          })
+        }
+      </div>
     </div>
-    <!-- <div class="gradient-black bottom"></div> -->
   </div>
 </div>
 
-<script>
-  const rightSide = document.querySelector('.rightside') as HTMLElement;
-  const windowHeight = window?.innerHeight;
-
-  console.log("windowHeight", windowHeight);
-  console.log("offsetHeight", rightSide.offsetTop);
-
-  const rightSideHeight = windowHeight - rightSide.offsetTop;
-  
-  console.log('rightSideHeight', rightSideHeight);
-
-  if (rightSide) {
-    rightSide.style.height = `calc(100vh - ${rightSideHeight}))`;
-  }
-</script>

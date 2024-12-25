@@ -28,7 +28,7 @@ const {
 
 <a
   id={id}
-  href={!!link.url ? link.url : link.cached_url || ""}
+  href={!!link.url ? link.url : link.cached_url || "" || link}
   class:list={[arrowPos, labelPos, className, animation]}
 >
   <span class:list={["label", { noLabelWidth: noLabelWidth }]}>{label}</span>

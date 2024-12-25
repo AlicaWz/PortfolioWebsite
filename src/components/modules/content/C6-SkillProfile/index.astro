@@ -1,0 +1,49 @@
+---
+import { storyblokEditable, type SbBlokData } from "@storyblok/astro";
+
+export interface C6SkillProfileItemProps {
+  label?: string;
+  value?: "25" | "50" | "75" | "100";
+  color?: "red" | "blue" | "purple";
+}
+
+export interface C6SkillProfileProps extends BASIC.IComponentDefaults {
+  headline?: string;
+  items?: C6SkillProfileItemProps[];
+  othersLabel?: string;
+  others?: string;
+}
+
+export interface Props {
+  blok: SbBlokData & C6SkillProfileProps;
+}
+
+const { blok } = Astro.props;
+
+console.log("blok", blok);
+---
+
+<section class="c6-skill-profile" {...storyblokEditable(blok)}>
+  {blok.headline && <h3>{blok.headline}</h3>}
+  <ul>
+    {
+      blok.items &&
+        blok.items.map((item: C6SkillProfileItemProps) => (
+          <li>
+            <h5>{item.label}</h5>
+            <progress class:list={[item.color]} value={item.value} max="100">
+              {item.value}%
+            </progress>
+          </li>
+        ))
+    }
+  </ul>
+  <div class="others">
+    {blok.othersLabel && <h5>{blok.othersLabel}</h5>}
+    {blok.others && <p>{blok.others}</p>}
+  </div>
+</section>
+
+<style>
+  @import "./index.css";
+</style>

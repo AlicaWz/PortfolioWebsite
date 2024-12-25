@@ -29,6 +29,7 @@ export default defineConfig({
         c3Image: "components/modules/content/C3-Image/index",
         c4Numbers: "components/modules/content/C4-Numbers/index",
         c5Timeline: "components/modules/content/C5-Timeline/index",
+        c6SkillProfile: "components/modules/content/C6-SkillProfile/index",
         t2Overview: "components/modules/teaser/T2-Overview",
       },
       apiOptions: {
