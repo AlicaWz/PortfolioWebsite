@@ -6,9 +6,9 @@ type Theme = 'dark' | 'light'
 
 export const ThemeSwitch = () => {
 
-    const [theme, setTheme] = useState<Theme>('light')
+    const [theme, setTheme] = useState<Theme>('dark')
 
-    const handleChange = (e: ChangeEvent) => setTheme(e.target.checked ? 'dark' : 'light')
+    const handleChange = (e: ChangeEvent) => setTheme(e.target.checked ? 'light' : 'dark')
 
     useEffect(() => {
         document.body.setAttribute('data-theme', theme);
@@ -17,7 +17,7 @@ export const ThemeSwitch = () => {
     return (
         <div className="theme-switch">
             <Icon name={theme === 'dark' ? "Sun" : "FilledSun"} class="icon" />
-            <input type="checkbox" onChange={handleChange} checked={theme === 'dark'} />
+            <input type="checkbox" onChange={handleChange} checked={theme === 'light'} />
 
         </div>
     )

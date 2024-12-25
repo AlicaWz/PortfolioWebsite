@@ -34,7 +34,7 @@
 
       &:hover {
         cursor: default;
-        color: var(--color-white);
+        color: var(--font-color);
       }
     }
   }

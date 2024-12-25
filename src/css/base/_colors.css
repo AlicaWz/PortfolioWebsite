@@ -11,6 +11,9 @@
 
   --color-white: #fffefc;
   --color-black: #000616;
+
+  --gradient-black: linear-gradient(180deg, rgba(0, 6, 22, 0) 0%, #000616 75%);
+  --gradient-white: linear-gradient(180deg, rgba(239, 237, 233, 0) 0%, #EFEDE9 75%);
 }
 
 .bg-red {
@@ -27,8 +30,4 @@
 }
 .bg-purple {
   background-color: var(--color-primary-purple);
-}
-
-.gradient-black {
-  background: linear-gradient(180deg, rgba(0, 6, 22, 0) 0%, #000616 75%);
 }

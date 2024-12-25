@@ -3,44 +3,38 @@
   width: 32px;
   height: 32px;
 
-  &:hover {
-    icon {
-      cursor: pointer;
-      fill: var(--color-white);
-      transform: rotate(360deg);
-    }
-  }
-
   [type="checkbox"] {
-    background-color: transparent;
     width: 32px;
     height: 32px;
     margin: 0;
     appearance: none;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .icon {
     position: absolute;
     top: 0;
     z-index: -1;
+    animation: rotate 20s linear infinite;
+    width: 32px;
+    height: 32px;
 
     svg {
       width: 32px;
       height: 32px;
     }
-  }
-}
 
-/* 
-    a.theme-switch {
-      stroke: var(--color-white);
-      display: inline-block;
-      transition: transform 0.5s ease-in-out;
-      height: 32px;
+    @keyframes rotate {
+      0% {
+        transform: rotate(0);
+      }
 
-      &:hover {
-        cursor: pointer;
-        fill: var(--color-white);
+      100% {
         transform: rotate(360deg);
       }
-    } */
+    }
+  }
+}
