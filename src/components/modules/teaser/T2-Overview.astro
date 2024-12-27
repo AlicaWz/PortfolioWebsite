@@ -1,18 +1,13 @@
 ---
 import EmblaCarousel from 'embla-carousel'
-import type {
-  AssetStoryblok,
-  IComponentDefaults,
-  LinktStoryblok,
-} from "@system/utils/types";
 
 export interface ItemProps {
   headline: string;
-  link: LinktStoryblok;
-  image: AssetStoryblok;
+  link: BASIC.LinkProps;
+  image: BASIC.AssetStoryblok;
 }
 
-export interface TeaserOverviewProps extends IComponentDefaults {
+export interface TeaserOverviewProps extends BASIC.IComponentDefaults {
   headline: string;
   items: ItemProps[];
 }

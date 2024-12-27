@@ -1,0 +1,40 @@
+.f1-header {
+    position: relative;
+    width: 100%;
+    z-index: 5;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 16px 0;
+      max-width: 2220px;
+      margin: 0 auto;
+      @media (--medium-viewport) {
+        padding: 24px 32px 0;
+      }
+      @media (--xlarge-viewport) {
+        padding: 24px 0 0;
+      }
+    }
+
+    a.lang-switch {
+      opacity: 50%;
+      padding: 8px;
+      font-size: 20px;
+
+      &:hover {
+        color: var(--color-primary-yellow);
+        opacity: 100%;
+      }
+    }
+
+    a.active {
+      opacity: 100%;
+
+      &:hover {
+        cursor: default;
+        color: var(--font-color);
+      }
+    }
+  }

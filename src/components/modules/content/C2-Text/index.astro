@@ -1,0 +1,65 @@
+---
+import ArrowLink, {
+  type ArrowLinkProps,
+} from "@components/elements/ArrowLink.astro";
+import { renderRichText, storyblokEditable, type SbBlokData } from "@storyblok/astro";
+
+export interface C2TextProps extends BASIC.IComponentDefaults {
+  theme?: "default" | "light-theme";
+  headline?: string;
+  copy?: BASIC.RichtextStoryblok;
+  textalignment?: "left" | "center";
+  seeAllLink?: ArrowLinkProps[];
+  width?: string;
+  showAnimation?: boolean
+}
+
+export interface Props {
+  blok: SbBlokData & C2TextProps;
+}
+
+const { blok } = Astro.props;
+const { headline, textalignment, width, seeAllLink, showAnimation } = blok;
+
+const copy = renderRichText(blok.copy) || "";
+---
+
+<section
+  aria-label="Text"
+  class:list={["c2-text", width === "half" && "col-span-4 md-col-span-2 lg-col-span-6", width === "full" && "col-span-4 md-col-span-4 lg-col-span-12"]}
+  {...storyblokEditable(blok)}
+  id={blok._uid}
+>
+  <div class="heading">
+    <h2>{headline}</h2>
+    {
+      !!seeAllLink &&
+        seeAllLink.map((link) => (
+          <ArrowLink
+            {...link}
+            variant="arrow-right"
+            arrowPos="right"
+            noLabelWidth
+          />
+        ))
+    }
+  </div>
+  <div class=`text-${textalignment} content-wrapper`>
+    { showAnimation && <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"></script>
+
+    <dotlottie-player
+      src="https://lottie.host/cddf1223-7fdb-4845-b651-e932da2797a9/lHrh4Bo63h.json"
+      background="transparent"
+      speed="1"
+      style="width: 200px; height: 200px;"
+      loop
+      autoplay></dotlottie-player>}
+    <Fragment set:html={copy} />
+  </div>
+</section>
+
+<style>
+	@import './index.css';
+</style>

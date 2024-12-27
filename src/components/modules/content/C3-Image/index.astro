@@ -1,0 +1,42 @@
+---
+import Picture from "@components/elements/Picture.astro";
+
+export interface ImageProps {
+    gridSmall?: { start: number, span: number};
+    gridMedium?: { start: number, span: number};
+    gridLarge?: { start: number, span: number};
+    image: BASIC.AssetStoryblok
+    backgroundColor: "Red" | "Blue" | "Green" | "Yellow" | "Purple";
+    aspectRatio?: "1/1" | "16/9" |"9/16" | "4/3" | "3/4"; 
+    autoHeight: boolean;
+}
+
+const { gridSmall, gridMedium, gridLarge, image, backgroundColor, autoHeight, inferSize = "true", aspectRatio = "1/1" } = Astro.props;
+
+const smallStart = gridSmall && gridSmall.start
+const smallSpan = gridSmall && gridSmall.span
+const mediumStart = gridMedium && gridMedium.start
+const mediumSpan = gridMedium && gridMedium.span
+const largeStart = gridLarge && gridLarge.start
+const largeSpan = gridLarge && gridLarge.span
+
+const aspectRatioClass = aspectRatio.replace('/', '-');
+---
+
+<c3-image class:list={[
+    `col-span-${smallSpan}`,
+    `md-col-span-${mediumSpan}`,
+    `lg-col-span-${largeSpan}`,
+    `col-start-${smallStart}`,
+    `md-col-start-${mediumStart}`,
+    `lg-col-start-${largeStart}`,
+    `bg-${backgroundColor}`,
+    { 'h-auto': autoHeight },
+
+]}>
+    <Picture image={image} alt={image.alt || ''} aspectRatio={aspectRatio}/>
+</c3-image>
+
+<style>
+	@import './index.css';
+</style>

@@ -1,101 +1,63 @@
 ---
 /***
  * P3 About me
- * @description Page Type about me
+ * @description Page Template for About me Page
  */
+import ArrowLink from "@components/elements/ArrowLink.astro";
 import C3Image, {
   type ImageProps,
-} from "@components/modules/content/C3-Image.astro";
-import Footer from "@components/modules/function/F2-Footer.astro";
+} from "@components/modules/content/C3-Image/index.astro";
 import { storyblokEditable, type SbBlokData } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
+
 const { blok, language } = Astro.props;
+
+const url = Astro.url.pathname;
+const isGerman = url.includes("/de/");
 ---
 
 <div
   id="content"
-  class="grid-container grid-margin"
+  class="p3-about-me grid-container grid-margin grid-no-paddin grid-max-height"
   {...storyblokEditable(blok)}
 >
-  <div class="col-span-2 lg-col-span-5 padding">
+  <div class="col-span-4 md-col-span-2 lg-col-span-5 leftside">
+    <ArrowLink
+      variant="arrow-left"
+      label={ !isGerman ? "Back" : "Zurück"}
+      link={ !isGerman ? "/" : "/de/"}
+      class="col-span-4 lg-col-span-12"
+      arrowPos="leftSide"
+      noLabelWidth
+    />
     {
       !!blok.image &&
         blok.image.map((image: ImageProps) => (
-          <C3Image
-            gridSmall={{ start: 1, span: 2 }}
-            gridMedium={{ start: 1, span: 2 }}
-            gridLarge={{ start: 1, span: 5 }}
-            aspectRatio="1/1"
-            inferSize={true}
-            {...image}
-          />
+          <div class="lg-center-image">
+            <C3Image
+              gridSmall={{ start: 1, span: 2 }}
+              gridMedium={{ start: 1, span: 2 }}
+              gridLarge={{ start: 1, span: 5 }}
+              aspectRatio="1/1"
+              inferSize={true}
+              {...image}
+              autoHeight
+            />
+          </div>
         ))
     }
   </div>
-  <div class="leftside col-span-4 md-col-span-2 lg-col-start-7 lg-col-span-6">
-    <div class="gradient-black top"></div>
+  <div class="rightside col-span-4 md-col-span-2 lg-col-start-7 lg-col-span-6">
     <div class="scroll-area">
-      <div id="scroll-to-top"></div>
-      {
-        blok.modules?.map((blok: SbBlokData) => {
-          return <StoryblokComponent language={language} blok={blok} />;
-        })
-      }
-    <Footer scrollId="scroll-to-top" /> 
+      <div class="content-wrapper">
+        {
+          blok.modules?.map((blok: SbBlokData) => {
+            return <StoryblokComponent language={language} blok={blok} />;
+          })
+        }
+      </div>
     </div>
-    <div class="gradient-black bottom"></div>
   </div>
 </div>
 
-<style>
-  .grid-container {
-    padding: 0;
-  }
-
-  .padding {
-    padding: 96px 0;
-    margin: auto 0;
-  }
-
-  .leftside {
-    position: relative;
-    max-height: 100vh;
-    overflow: hidden;
-
-    .scroll-area {
-      padding: 0 0 80px;
-      ::-webkit-scrollbar {
-        display: none;
-      }
-      scrollbar-width: none;
-      display: flex;
-      flex-direction: column;
-      gap: 80px;
-
-      @media (--large-viewport) {
-        overflow-y: scroll;
-        margin-top: 96px;
-        height: 100%;
-        padding: 200px 0 250px;
-        gap: 96px;
-      }
-    }
-  }
-
-  .gradient-black {
-    position: absolute;
-    height: 150px;
-    width: 100%;
-    z-index: 1;
-  }
-
-  .top {
-    top: 96px;
-    rotate: 180deg;
-  }
-
-  .bottom {
-    bottom: 0;
-  }
-</style>

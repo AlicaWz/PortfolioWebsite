@@ -1,0 +1,31 @@
+---
+import TimelineItem,  { type TimelineItemProps } from "@components/elements/TimelineItem.astro";
+
+export interface C5TimelineProps extends BASIC.IComponentDefaults {
+    items: TimelineItemProps[]
+}
+
+export interface Props {
+    blok: C5TimelineProps;
+}
+
+const { blok } = Astro.props;
+const { items } = blok;
+
+---
+
+<section
+    aria-label="Timeline"
+    class="c5-timeline col-span-4 lg-col-start-1 lg-col-span-10"
+    id={blok._uid}
+>
+    <div class="timeline">
+        {items.map((item) => (
+            <TimelineItem {...item} />
+        ))}
+    </div>
+</section>
+
+<style>
+	@import './index.css';
+</style>

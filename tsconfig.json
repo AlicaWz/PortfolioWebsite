@@ -11,7 +11,9 @@
       "@public/*": ["public/*"],
       "@system/*": ["src/system/*"],
       "@templates/*": ["src/templates/*"],
-      "@css/*": ["src/css/*"]
+      "@css/*": ["src/css/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@utils/*": ["src/utils/*"],
     },
   }
 }

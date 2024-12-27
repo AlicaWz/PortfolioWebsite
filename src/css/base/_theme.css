@@ -1,0 +1,15 @@
+:root {
+    --background: var(--color-black);
+    --accent-color: var(--color-neutral-stonegrey);
+    --icon-color: var(--color-white);
+    --font-color: var(--color-white);
+    --gradient: var(--gradient-black);
+  }
+  
+  [data-theme='light'] {
+    --background: var(--color-neutral-stonewhite);
+    --accent-color: var(--color-white);
+    --icon-color: var(--color-black);
+    --font-color: var(--color-black);
+    --gradient: var(--gradient-white);
+  }

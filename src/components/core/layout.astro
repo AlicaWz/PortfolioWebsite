@@ -1,7 +1,6 @@
 ---
 import "@css/index.css";
-import Header from "@components/modules/function/F1-Header.astro";
-import Footer from "@components/modules/function/F2-Footer.astro";
+import Header from "@components/modules/function/F1-Header/index.astro";
 
 export interface Props {
   pageType: string;
@@ -14,8 +13,7 @@ export interface Props {
   };
 }
 
-const { language, langSwitch, meta, pageType } = Astro.props;
-const canonical = `${Astro.url.origin}${Astro.url.pathname}`;
+const { language, langSwitch, meta, pageType } = Astro.props;;
 ---
 
 <!doctype html>
@@ -24,54 +22,114 @@ const canonical = `${Astro.url.origin}${Astro.url.pathname}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-		<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5" />
-		<link rel="sitemap" href="/sitemap-index.xml" />
-		<link rel="canonical" href={canonical} /> 
-		<meta name="msapplication-TileColor" content="#da532c" />
-		<meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-		<meta name="theme-color" content="#ffffff" />-->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="/favicon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
     <meta name="generator" content={Astro.generator} />
     <title>{meta?.metaTitle}</title>
     <meta name="description" content={meta?.metaDescription} />
     <meta name="og:title" content={meta?.metaTitle} />
     <meta name="og:description" content={meta?.metaDescription} />
-    <!-- <meta name="og:image" content={!!meta?.metaImage ? meta.metaImage : '/images/ogImage.png'} /> -->
   </head>
 
-  <body>
-    <script
-      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-      type="module"></script>
+  <body
+    class:list={[pageType === "p3AboutMe" ? "window-height" : ""]}
+    data-theme="light"
+  >
+      <Header langSwitch={langSwitch} language={language} />
+      <main class="relative">
+        <slot />
+      </main>
+      <style>
+        :root {
+          --currentViewport: "small";
 
-    <dotlottie-player
-      src="https://lottie.host/cddf1223-7fdb-4845-b651-e932da2797a9/lHrh4Bo63h.json"
-      background="transparent"
-      speed="1"
-      style="width: 300px; height: 300px;"
-      loop
-      autoplay></dotlottie-player>
-    <h1>Coming Soon!</h1>
-    <!-- <Header langSwitch={langSwitch} language={language}/> 
-		<main class="relative">
-			<slot />
-		</main> 
-		{pageType !== "p3AboutMe" && <Footer langSwitch={langSwitch} language={language} positionAbsolute/>}-->
-    <style>
-      :root {
-        --currentViewport: "small";
+          @media (--medium-viewport) {
+            --currentViewport: "medium";
+          }
 
-        @media (--medium-viewport) {
-          --currentViewport: "medium";
+          @media (--large-viewport) {
+            --currentViewport: "large";
+          }
         }
 
-        @media (--large-viewport) {
-          --currentViewport: "large";
+        .window-height {
+          height: 100vh;
         }
-      }
-    </style>
+      </style>
   </body>
 </html>

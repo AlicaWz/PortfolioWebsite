@@ -1,0 +1,32 @@
+---
+import { Icon } from 'astro-icon/components'
+export interface ButtonProps {
+  label?: string;
+  variant?: "primary" | "secondary";
+  color?: "purple" | "grey";
+  href?: BASIC.LinkProps | string;
+  target?: string;
+  fullWidth?: boolean;
+  icon?: string;
+}
+
+const {
+  label,
+  variant = "primary",
+  href,
+  target,
+  color = "purple",
+  fullWidth,
+  icon
+} = Astro.props;
+---
+
+<a
+  class:list={["btn", variant, color, fullWidth ? "fullWidth" : ""]}
+  type="button"
+  href={href.linktype === "email" ? `mailto:${href.email}` : `${href.cached_url}`}
+  target={target}
+>
+  {label}
+  {icon && <Icon name={icon} class="btn-icon" />}
+</a>

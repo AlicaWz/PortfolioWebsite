@@ -1,0 +1,56 @@
+.p3-about-me {
+  --header-height: 56px;
+
+  .leftside {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: auto;
+    padding: 32px 0 0;
+
+    @media (--medium-viewport) {
+      height: 87vh;
+      padding: 32px 0;
+    }
+  }
+
+  .lg-center-image {
+    margin: auto 0;
+  }
+
+  .rightside {
+    position: relative;
+
+    .scroll-area {
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      scrollbar-width: none;
+      display: flex;
+      flex-direction: column;
+
+      @media (--medium-viewport) {
+        overflow-y: scroll;
+        height: 94vh;
+      }
+    }
+  }
+
+  .content-wrapper {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 32px;
+
+    @media (--medium-viewport) {
+      padding: 32px 0;
+      margin-bottom: 0;
+    }
+
+    @media (--large-viewport) {
+      padding: 64px 0;
+      gap: 96px;
+    }
+  }
+}

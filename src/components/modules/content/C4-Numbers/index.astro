@@ -1,0 +1,35 @@
+---
+import NumbersItem, { type NumbersItemProps } from "@components/elements/NumbersItem.astro";
+import { storyblokEditable, type SbBlokData } from "@storyblok/astro";
+
+
+export interface C4NumbersProps extends BASIC.IComponentDefaults {
+    items: NumbersItemProps[]
+}
+
+export interface Props {
+    blok: SbBlokData & C4NumbersProps;
+}
+
+const { blok } = Astro.props;
+const { items } = blok;
+---
+
+<section
+    aria-label="Numbers"
+    class="c4-numbers col-span-4 lg-col-start-11 lg-col-span-2"
+    id={blok._uid}
+    {...storyblokEditable(blok)}
+>
+    <div class="numbers">
+        {items.map((item) => (
+            <NumbersItem {...item} />
+        ))}
+    </div>
+</section>
+
+<style>
+	@import './index.css';
+</style>
+
+
