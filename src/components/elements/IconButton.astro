@@ -2,18 +2,22 @@
 import { Image } from "astro:assets";
 
 export interface IconButtonProps {
-    icon: BASIC.AssetStoryblok;
-    variant: "primary" | "secondary";
-    theme: "default" | "light"
-    href: BASIC.LinkProps;
-    target: string;
+    icon?: BASIC.AssetStoryblok;
+    social?: "linkedin" | "github"
+    variant?: "primary" | "secondary";
+    href?: BASIC.LinkProps;
+    target?: string;
+    size?: number;
 }
 
-const { icon, variant = "primary", href, target } = Astro.props
+const { icon, variant = "primary", href, social, target, size = 24 } = Astro.props
+
+console.log("Props", Astro.props)
 ---
 
 <a class:list={[variant]} type="button" href={href.url} target={target}>
-    <Image src={icon.filename} alt={icon.alt || ''} inferSize={true} />
+    <svg name={social} height={size} width={size} />
+    {icon.filename &&  <Image src={icon.filename} alt={icon.alt || ''} height={size} width={size} />}
 </a>
 
 <style>
@@ -21,7 +25,8 @@ const { icon, variant = "primary", href, target } = Astro.props
         width: 48px;
         height: 48px;
         border-radius: 100%;
-        color: var(--color-white);
+        color: var(--background);
+        background-color: var(--background);
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -39,6 +44,10 @@ const { icon, variant = "primary", href, target } = Astro.props
 
     .primary {
         background-color: var(--color-white);
+
+        svg {
+            fill
+        }
 
         &:hover {
             cursor: pointer;

@@ -1,5 +1,5 @@
 ---
-import Layout from "@components/core/Layout.astro";
+import Layout from "@components/core/layout.astro";
 import { useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
@@ -67,6 +67,8 @@ const metaData = {
     : "",
   noIndex: story.content.noIndex ? story.content.noIndex : false,
 };
+
+console.log("story", story)
 ---
 
 <Layout meta={metaData} langSwitch={langSwitch} language={language} pageType={pageType}>
