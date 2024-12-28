@@ -1,11 +1,13 @@
 # build output
 dist/
+.vercel/
 
 # generated types
 .astro/
 
 # vscode |
 .vscode/settings.json
+
 
 # dependencies
 node_modules/
