@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from 'astro-icon/components'
 
 export interface IconButtonProps {
     icon?: BASIC.AssetStoryblok;
@@ -11,12 +12,10 @@ export interface IconButtonProps {
 }
 
 const { icon, variant = "primary", href, social, target, size = 24 } = Astro.props
-
-console.log("Props", Astro.props)
 ---
 
 <a class:list={[variant]} type="button" href={href.url} target={target}>
-    <svg name={social} height={size} width={size} />
+    {social && <Icon name={social} height={size} width={size} />}
     {icon.filename &&  <Image src={icon.filename} alt={icon.alt || ''} height={size} width={size} />}
 </a>
 
@@ -25,12 +24,17 @@ console.log("Props", Astro.props)
         width: 48px;
         height: 48px;
         border-radius: 100%;
-        color: var(--background);
-        background-color: var(--background);
+        color: var(--icon-color);
+        background-color: var(--accent-color);
         text-decoration: none;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all .5s ease-in-out;
+
+        &:hover {
+            filter: var(--hover);
+        }
     }
 
     p {
@@ -42,27 +46,13 @@ console.log("Props", Astro.props)
         height: 32px;
     }
 
-    .primary {
-        background-color: var(--color-white);
-
-        svg {
-            fill
-        }
-
-        &:hover {
-            cursor: pointer;
-            background-color: var(--color-neutral-stonewhite);
-        }
-    }
-
     .secondary {
-        border: 2px solid var(--color-white);
-        color: var(--color-white);
+        border: 2px solid var(--icon-color);
+        color: var(--icon-color);
 
         &:hover {
             cursor: pointer;
-            border-color: var(--color-neutral-stonewhite);
-            color: var(--color-neutral-stonewhite);
+            filter: var(--hover);
         }
     }
 </style>
