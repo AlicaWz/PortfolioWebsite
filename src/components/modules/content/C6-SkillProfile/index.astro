@@ -19,6 +19,27 @@ export interface Props {
 }
 
 const { blok } = Astro.props;
+
+function getClassNameForValue(value: string) {
+  switch (value) {
+    case '25':
+      return 'width-25';
+    case '33':
+      return 'width-33';
+    case '50':
+      return 'width-50';
+    case '66':
+      return 'width-66';
+    case '75':
+      return 'width-75';
+    case '90':
+      return 'width-90';
+    case '100':
+      return 'width-100';
+    default:
+      return '';
+  }
+}
 ---
 
 <section class="c6-skill-profile" {...storyblokEditable(blok)}>
@@ -29,9 +50,8 @@ const { blok } = Astro.props;
         blok.items.map((item: C6SkillProfileItemProps) => (
           <li>
             <h5>{item.label}</h5>
-            <progress class:list={[item.color]} value={item.value} max="100">
-              {item.value}%
-            </progress>
+            <div class:list={["custom-progress", item.color, getClassNameForValue(item.value as string)]}>
+            </div>
           </li>
         ))
     }
