@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# vercel 
+.vercel/output/functions/_render.func/Documents/Privat/Portfolio/PortfolioWebsite/.vercel/output/_functions/entry.mjs
+
 # vscode |
 .vscode/settings.json
 

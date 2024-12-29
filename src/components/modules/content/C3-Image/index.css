@@ -3,6 +3,7 @@ c3-image {
   display: flex;
   align-items: flex-end;
   height: 100%;
+  max-height: 80vh;
 
 
   &.h-auto {
@@ -15,32 +16,13 @@ c3-image {
     object-fit: cover;
     object-position: bottom;
     overflow: visible;
-    z-index: 1;
+    max-height: 80vh;
+    transform: translateY(7px);
 
 
     @media (--large-viewport) {
       width: 120%;
       transform: translateX(-80px) translateY(7px);
-    }
-
-    .aspect-ratio-1-1 {
-      aspect-ratio: 1 / 1;
-    }
-
-    .aspect-ratio-16-9 {
-      aspect-ratio: 16 / 9;
-    }
-
-    .aspect-ratio-9-16 {
-      aspect-ratio: 9 / 16;
-    }
-
-    .aspect-ratio-4-3 {
-      aspect-ratio: 4 / 3;
-    }
-
-    .aspect-ratio-3-4 {
-      aspect-ratio: 3 / 4;
     }
   }
 }
