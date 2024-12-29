@@ -8,12 +8,17 @@
   min-height: 48px;
   border-radius: 12px;
   color: var(--color-white);
-  min-width: 240px;
+  min-width: 180px;
   width: fit-content;
   font-weight: bold;
   text-decoration: none;
   text-transform: lowercase;
+  transition: all .5s ease-in-out;
   width: auto;
+}
+
+@media (--large-viewport) {
+  min-width: 240px;
 }
 
 .fullWidth {
@@ -36,7 +41,7 @@
 
     &:hover {
       cursor: pointer;
-      filter: brightness(1.1);
+      filter: var(--hover);
     }
   }
 }

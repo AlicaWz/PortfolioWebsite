@@ -1,19 +1,15 @@
 body {
   margin: 0;
   font-family: "Poppins";
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   background-color: var(--background);
   color: var(--font-color);
 
   svg {
-    fill: var(--icon-color);
-  }
-
-  @media (--large-viewport) {
-    height: 100vh;
+      fill: var(--icon-color);
+      transition: all .2s ease-in-out;
   }
 }
-
 
 main {
   position: relative;

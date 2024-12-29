@@ -17,7 +17,7 @@ export interface C1StageProps extends BASIC.IComponentDefaults {
   headline: string;
   copy: BASIC.RichtextStoryblok;
   contactButton: ButtonProps[];
-  linkedInButton: IconButtonProps[];
+  linkedButtons: IconButtonProps[];
   image: ImageProps[];
   aboutMeButton: ButtonProps[];
   innergrid: boolean;
@@ -33,7 +33,7 @@ const {
   tags,
   headline,
   contactButton,
-  linkedInButton,
+  linkedButtons,  
   aboutMeButton,
   image,
   innergrid = "false",
@@ -70,9 +70,9 @@ const copy = renderRichText(blok.copy) || "";
     <div class="button-wrapper">
       {!!contactButton && contactButton.map((button) => <Button {...button} />)}
       {
-        !!linkedInButton &&
-          linkedInButton.map((linkedInButton) => (
-            <IconButton {...linkedInButton} />
+        !!linkedButtons &&
+          linkedButtons.map((linkedButton) => (
+            <IconButton {...linkedButton} />
           ))
       }
     </div>
