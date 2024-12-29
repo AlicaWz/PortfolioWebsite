@@ -1,6 +1,0 @@
-{
-	"runtime": "nodejs18.x",
-	"handler": "Documents/Privat/Portfolio/PortfolioWebsite/.vercel/output/_functions/entry.mjs",
-	"launcherType": "Nodejs",
-	"supportsResponseStreaming": true
-}
