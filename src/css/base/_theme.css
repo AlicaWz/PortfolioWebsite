@@ -4,6 +4,7 @@
     --icon-color: var(--color-white);
     --font-color: var(--color-white);
     --gradient: var(--gradient-black);
+    --hover: brightness(1.1);
   }
   
   [data-theme='light'] {
@@ -12,4 +13,5 @@
     --icon-color: var(--color-black);
     --font-color: var(--color-black);
     --gradient: var(--gradient-white);
+    --hover: brightness(0.8);
   }

@@ -13,9 +13,6 @@
       @media (--medium-viewport) {
         padding: 24px 32px 0;
       }
-      @media (--xlarge-viewport) {
-        padding: 24px 0 0;
-      }
     }
 
     a.lang-switch {

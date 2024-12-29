@@ -11,7 +11,7 @@ export interface ImageProps {
     autoHeight: boolean;
 }
 
-const { gridSmall, gridMedium, gridLarge, image, backgroundColor, autoHeight, inferSize = "true", aspectRatio = "1/1" } = Astro.props;
+const { gridSmall, gridMedium, gridLarge, image, backgroundColor, autoHeight, aspectRatio } = Astro.props;
 
 const smallStart = gridSmall && gridSmall.start
 const smallSpan = gridSmall && gridSmall.span
@@ -19,8 +19,6 @@ const mediumStart = gridMedium && gridMedium.start
 const mediumSpan = gridMedium && gridMedium.span
 const largeStart = gridLarge && gridLarge.start
 const largeSpan = gridLarge && gridLarge.span
-
-const aspectRatioClass = aspectRatio.replace('/', '-');
 ---
 
 <c3-image class:list={[
