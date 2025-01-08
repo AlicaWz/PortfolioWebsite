@@ -23,15 +23,6 @@ const { language, langSwitch } = Astro.props;
   </nav>
 </header>
 
-<script>
-  const themeSwitch = document.getElementById("theme-switch");
-  const body = document.querySelector("body");
-
-  if (body) {
-    body.dataset.theme = body.dataset.theme === "light" ? "dark" : "light";
-  }
-</script>
-
 <style>
   @import "./index.css";
 </style>
