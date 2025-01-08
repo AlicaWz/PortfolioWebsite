@@ -3,10 +3,11 @@ import { useStoryblokApi } from "@storyblok/astro";
 import ArrowLink from "@components/elements/ArrowLink.astro";
 
 export interface F2FooterProps {
-  copyright: string;
-  backToTopLabel: String;
+  copyright?: string;
+  backToTopLabel?: String;
   scrollId: string;
   padding?: boolean;
+  footerNavi: BASIC.LinkProps[];
 }
 
 const storyblokApi = useStoryblokApi();
@@ -23,13 +24,16 @@ const { data } = await storyblokApi
     return { data: null };
   });
 
-const { scrollId, padding } = Astro.props;
-const footer = data.story.content;
+  const footer = data.story.content;
+
+  const { scrollId, padding } = Astro.props;
+  const url = Astro.url.pathname;
+const isGerman = url.includes("/de/");
 ---
 
 <footer class:list={["f2-footer", padding ? "padding" : ""]}>
-  <p>{footer.copyright}</p>
-  <ArrowLink
+  {footer.copyright && <p>{footer.copyright}</p>}
+  {footer.backToTopLabel && <ArrowLink
     id="backToTop"
     link={{ url: scrollId ? `#${scrollId}` : "" }}
     label={footer.backToTopLabel}
@@ -37,7 +41,19 @@ const footer = data.story.content;
     variant="arrow-up"
     arrowPos="right"
     animation="bounce"
-  />
+  />}
+  {footer.footerNavi && (
+    <nav>
+        {footer.footerNavi.map((item: BASIC.LinkProps) => (
+            <a
+              href={item.link.cached_url}
+              class="footer-nav-item"
+            >
+              {item.label === "Imprint" && isGerman ? "Impressum" : item.label}
+            </a>
+        ))}
+    </nav>
+  )}
 </footer>
 
 <script>
@@ -61,42 +77,6 @@ const footer = data.story.content;
 </script>
 
 <style>
-  .f2-footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 2220px;
-    margin: 0 auto;
-
-    p {
-      font-weight: 300;
-      color: var(--color-neutral-stonewhite);
-      width: fit-content;
-    }
-
-    .padding {
-      padding: 0 16px 16px;
-
-      @media (--medium-viewport) {
-        padding: 0 32px 24px;
-      }
-    }
-  }
-
-  /* .positionAbsolute { 
-    padding: 0 16px 24px;
-      @media (--medium-viewport) {
-      padding: 0 32px 24px;
-    }
-    @media (--large-viewport) {
-      position: absolute;
-      bottom: 0;
-      left: 0px;
-      right: 0px;
-    }
-    @media (--xlarge-viewport) {
-      padding: 0 0 24px;
-    }
-  } */
+  @import "./index.css";
 </style>
+
