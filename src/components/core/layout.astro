@@ -1,7 +1,7 @@
 ---
 import "@css/index.css";
 import Header from "@components/modules/function/F1-Header/index.astro";
-import Footer from "@components/modules/function/F2-Footer.astro";
+import Footer from "@components/modules/function/F2-Footer/index.astro";
 
 export interface Props {
   pageType: string;
@@ -17,6 +17,8 @@ export interface Props {
 const { language, langSwitch, meta, pageType } = Astro.props;
 
 const aboutMe = pageType === "p3AboutMe";
+const url = Astro.url.pathname;
+const isImprint = url.includes("/imprint");
 ---
 
 <!doctype html>
@@ -114,9 +116,10 @@ const aboutMe = pageType === "p3AboutMe";
     data-theme="light"
   >
       <Header langSwitch={langSwitch} language={language} />
-      <main class="relative">
+      <main>
         <slot />
       </main>
+      {!isImprint && <Footer padding language={language}/>}
       <style>
         :root {
           --currentViewport: "small";

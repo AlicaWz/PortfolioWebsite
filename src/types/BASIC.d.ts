@@ -51,7 +51,7 @@ declare namespace BASIC {
   export interface LinkProps {
     id: string;
     label: string;
-    href: {
+    link: {
       url?: string;
       cached_url?: string;
     };

@@ -1,18 +1,30 @@
 ---
 /***
- * P1 Default Page Template
+ * P2 Legal Page Template
  * @description Default page template for content pages
  */
+ import ArrowLink from "@components/elements/ArrowLink.astro";
 import { storyblokEditable, type SbBlokData } from "@storyblok/astro"
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro"
 
 const { blok, language } = Astro.props
+
+const url = Astro.url.pathname;
+const isGerman = url.includes("/de/");
 ---
 
 <div
   id="content"
   class="grid-container grid-margin grid-padding"
   {...storyblokEditable(blok)}>
+  <ArrowLink
+      variant="arrow-left"
+      label={ !isGerman ? "Back" : "Zurück"}
+      link={ !isGerman ? "/" : "/de/"}
+      class="col-span-4 lg-col-span-12"
+      arrowPos="leftSide"
+      noLabelWidth
+    />
   {
     blok.modules?.map((blok: SbBlokData) => {
       return <StoryblokComponent language={language} blok={blok} />
