@@ -26,6 +26,9 @@ importers:
       '@storyblok/js':
         specifier: ^3.0.8
         version: 3.0.8
+      '@storyblok/richtext':
+        specifier: ^3.0.2
+        version: 3.0.2
       '@types/node':
         specifier: ^20.14.12
         version: 20.14.12
@@ -786,6 +789,9 @@ packages:
 
   '@storyblok/js@3.0.8':
     resolution: {integrity: sha512-JY+abbswBId84Ubr0yRwNpq5Klf9546Ia2Qs1pn6en5Trz8o6EcBJIwxvR6evjJ0Vp2cLKT7MV1yfGLAtnzycA==}
+
+  '@storyblok/richtext@3.0.2':
+    resolution: {integrity: sha512-KBLx9ycNVMyVnNyPiwBH5g9uWmiJpMzp9YvpnnADXlPLoksusrwI56BusSM8HaIgJgcnB5RR0LvhySkPFdC8Zg==}
 
   '@tanem/svg-injector@10.1.68':
     resolution: {integrity: sha512-UkJajeR44u73ujtr5GVSbIlELDWD/mzjqWe54YMK61ljKxFcJoPd9RBSaO7xj02ISCWUqJW99GjrS+sVF0UnrA==}
@@ -3701,6 +3707,8 @@ snapshots:
   '@storyblok/js@3.0.8':
     dependencies:
       storyblok-js-client: 6.8.1
+
+  '@storyblok/richtext@3.0.2': {}
 
   '@tanem/svg-injector@10.1.68':
     dependencies:

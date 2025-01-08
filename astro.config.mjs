@@ -23,6 +23,7 @@ export default defineConfig({
       components: {
         p1Generic: "templates/P1-Generic",
         p3AboutMe: "templates/P3-AboutMe",
+        p4Legal: "templates/P4-Legal",
         c1Stage: "components/modules/content/C1-Stage/index",
         c2Text: "components/modules/content/C2-Text/index",
         c21Text: "components/modules/content/C2.1-Text/index",
