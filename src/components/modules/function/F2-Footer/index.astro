@@ -28,7 +28,7 @@ const { data } = await storyblokApi
 
   const { scrollId, padding } = Astro.props;
   const url = Astro.url.pathname;
-const isGerman = url.includes("/de/");
+  const isGerman = url.includes("/de/");
 ---
 
 <footer class:list={["f2-footer", padding ? "padding" : ""]}>

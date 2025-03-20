@@ -1,13 +1,13 @@
 ---
 import { languages } from "@system/utils/langs";
-import { ThemeSwitch } from "@components/elements/ThemeSwitch";
+import {ThemeSwitch} from "@components/elements/ThemeSwitch";
 
 const { language, langSwitch } = Astro.props;
 ---
 
 <header class="f1-header" id="f1Header">
   <nav>
-    <ThemeSwitch client:load />
+    <ThemeSwitch client:only="react" />
     <span>
       {
         languages.map((lang) => (
