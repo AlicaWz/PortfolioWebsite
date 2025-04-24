@@ -1,10 +1,8 @@
 import { defineConfig } from "astro/config";
-
-import node from "@astrojs/node";
 import react from "@astrojs/react";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
-import storyblok from "@storyblok/astro";
+import { storyblok } from "@storyblok/astro";
 import { loadEnv } from "vite";
 import vercel from "@astrojs/vercel/serverless";
 
@@ -39,9 +37,9 @@ export default defineConfig({
     }),
   ],
   // workaround: pnpm build failed without this for me
-  vite: {
-    ssr: {
-      noExternal: ["path-to-regexp"],
-    },
-  },
+  // vite: {
+  //   ssr: {
+  //     noExternal: ["path-to-regexp"],
+  //   },
+  // },
 });
