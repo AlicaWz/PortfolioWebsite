@@ -1,0 +1,38 @@
+---
+/***
+ * P2 Project Page Template
+ * @description Page template for to display project cases
+ */
+import type { TagProps } from "@components/elements/Tag.astro";
+import type { ImageProps } from "@components/modules/content/C3-Image/index.astro";
+import { storyblokEditable, type SbBlokData } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+export type P2PageProps = {
+  theme?: "default" | "light-theme";
+  content: {
+    name?: string;
+    copy?: string;
+    tags?: TagProps[];
+    image?: {
+      filename: string;
+      name: string;
+    };
+    prevVariant?: "small" | "medium" | "large";
+    prevOrder?: number;
+  };
+};
+
+const { blok, language } = Astro.props;
+---
+
+<div
+  id="content"
+  class="grid-container grid-margin grid-padding"
+  {...storyblokEditable(blok)}>
+  {
+    blok.modules?.map((blok: SbBlokData) => {
+      return <StoryblokComponent language={language} blok={blok} />;
+    })
+  }
+</div>

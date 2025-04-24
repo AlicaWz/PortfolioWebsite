@@ -6,7 +6,7 @@ export interface ButtonProps {
   color?: "purple" | "grey";
   href?: BASIC.LinkProps | string;
   target?: string;
-  fullWidth?: boolean;
+  fullAuto?: boolean;
   icon?: string;
 }
 
@@ -16,15 +16,15 @@ const {
   href,
   target,
   color = "purple",
-  fullWidth,
+  fullAuto,
   icon
 } = Astro.props;
 ---
 
 <a
-  class:list={["btn", variant, color, fullWidth ? "fullWidth" : ""]}
+  class:list={["btn", variant, color, fullAuto ? "fullAuto" : ""]}
   type="button"
-  href={href.linktype === "email" ? `mailto:${href.email}` : `${href.cached_url}`}
+  href={href && href.linktype === "email" ? `mailto:${href.email}` : `${href && href.cached_url}`}
   target={target}
 >
   {label}

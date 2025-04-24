@@ -14,15 +14,15 @@
   text-decoration: none;
   text-transform: lowercase;
   transition: all .5s ease-in-out;
-  width: auto;
+  width: fit-content;
 }
 
 @media (--large-viewport) {
   min-width: 240px;
 }
 
-.fullWidth {
-  width: 100%;
+.fullAuto {
+  width: auto;
 }
 
 .primary {

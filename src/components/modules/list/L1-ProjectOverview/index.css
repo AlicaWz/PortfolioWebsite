@@ -1,0 +1,28 @@
+.l1-project-overview {
+  grid-column: span 4;
+  padding: var(--spacing-4xl) 0;
+
+  @media (--large-viewport) {
+    grid-column: span 12;
+  }
+  
+  h2, p {
+    text-align: center;
+  }
+
+  .item-wrapper {
+    padding-top: var(--spacing-2xl);
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (--medium-viewport) {
+      gap: var(--spacing-lg);
+      padding-top: var(--spacing-3xl);
+    }
+
+    @media (--large-viewport) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+}

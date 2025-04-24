@@ -20,6 +20,7 @@ export default defineConfig({
       enableFallbackComponent: true,
       components: {
         p1Generic: "templates/P1-Generic",
+        p2Project: "template/P2-Project",
         p3AboutMe: "templates/P3-AboutMe",
         p4Legal: "templates/P4-Legal",
         c1Stage: "components/modules/content/C1-Stage/index",
@@ -29,6 +30,7 @@ export default defineConfig({
         c4Numbers: "components/modules/content/C4-Numbers/index",
         c5Timeline: "components/modules/content/C5-Timeline/index",
         c6SkillProfile: "components/modules/content/C6-SkillProfile/index",
+        l1ProjectOverview: "components/modules/list/L1-ProjectOverview/index",
         t2Overview: "components/modules/teaser/T2-Overview",
       },
       apiOptions: {
