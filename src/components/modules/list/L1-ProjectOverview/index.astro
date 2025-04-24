@@ -1,0 +1,65 @@
+---
+import {
+  storyblokEditable,
+  useStoryblokApi,
+  type SbBlokData,
+} from "@storyblok/astro";
+import type { P2PageProps } from "@templates/P2-Project.astro";
+import ProjectItem from "./item/index.astro";
+
+export interface L1ProjectList extends BASIC.IComponentDefaults {
+  theme?: "default" | "light-theme";
+  headline?: string;
+  copy?: BASIC.RichtextStoryblok;
+  items?: P2PageProps[];
+}
+
+export interface Props {
+  blok: SbBlokData & L1ProjectList;
+}
+
+const { blok } = Astro.props;
+const { headline, copy } = blok;
+
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi
+  .get("cdn/stories/", {
+    content_type: "p2Project",
+    version:
+      (import.meta.env.STORYBLOK_IS_PREVIEW ||
+        process.env.STORYBLOK_IS_PREVIEW) === "yes"
+        ? "draft"
+        : "published",
+  })
+  .catch((error) => {
+    console.error("Error", error);
+    return { data: null };
+  });
+
+const items = data.stories;
+
+---
+
+<section aria-label="Project Overview List" {...storyblokEditable(blok)} id={blok._uid} class="l1-project-overview">
+  {headline && <h2>{headline}</h2>}
+  {copy && <p>{copy}</p>}
+  <div class="item-wrapper">
+    {
+      items &&
+        items.map((item: P2PageProps) => {
+          return <ProjectItem 
+          name={item.content.name}
+          copy={item.content.copy}
+          tags={item.content.tags}
+          image={item.content.image}
+          prevVariant={item.content.prevVariant}
+          prevOrder={item.content.prevOrder}
+          theme={blok.theme} />;
+        })
+    }
+  </div>
+</section>
+
+<style>
+  @import "./index.css";
+</style>

@@ -1,14 +1,17 @@
 ---
 import Button, { type ButtonProps } from "@components/elements/Button.astro";
-import { renderRichText, storyblokEditable, type SbBlokData } from "@storyblok/astro";
+import {
+  renderRichText,
+  storyblokEditable,
+  type SbBlokData,
+} from "@storyblok/astro";
 
 export interface C2_1TextProps extends BASIC.IComponentDefaults {
   theme: "default" | "light-theme";
   headline: string;
   textalignment: "left" | "center";
   copy: BASIC.RichtextStoryblok;
-  button?: ButtonProps;
-
+  button?: ButtonProps[];
 }
 
 export interface Props {
@@ -16,21 +19,35 @@ export interface Props {
 }
 
 const { blok } = Astro.props;
-const { headline, button } = blok;
+const { headline, button, textalignment } = blok;
 const copy = renderRichText(blok.copy);
+
 ---
 
 <section
   aria-label="Text"
-  class={`c2-1-text col-span-4 md-col-span-2 lg-col-span-6`}
+  class={`c2-1-text col-span-4 md-col-span-2 lg-col-start-4 lg-col-span-6`}
+  style={`text-align: ${textalignment}`}
   {...storyblokEditable(blok)}
-  id={blok._uid}
->
+  id={blok._uid}>
   <h3>{headline}</h3>
   {!!copy && <Fragment set:html={copy} />}
-  {!!button?.href && <Button {...button}/>}
+  {
+    button?.map((button) => {
+      return (
+        <Button
+          label={button.label}
+          variant={button.variant}
+          color={button.color}
+          href={button.href}
+          target={button.target}
+          icon={button.icon}
+        />
+      );
+    })
+  }
 </section>
 
 <style>
-	@import './index.css';
+  @import "./index.css";
 </style>

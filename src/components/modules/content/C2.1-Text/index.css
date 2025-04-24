@@ -1,7 +1,9 @@
 .c2-1-text {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 24px;
+    color: var(--font-color);
     
     .light-theme {
       background-color: var(--color-neutral-white);

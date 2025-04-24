@@ -1,0 +1,31 @@
+---
+import Tag, { type TagProps } from "@components/elements/Tag.astro";
+
+const { name, copy, tags, image, prevVariant, theme, prevOrder} = Astro.props;
+
+---
+
+<div class:list={`project-item ${prevVariant}`} style={`order: ${prevOrder}`}>
+  {
+    image && (
+      <img src={image?.filename} alt={image?.name} class="project-image" />
+    )
+  }
+  <div class="content-wrapper">
+    {name && <h3>{name}</h3>}
+    <p>Explore our latest projects and their details.</p>
+    {
+      !!tags && (
+        <div class="tags">
+          {tags.map((tag: TagProps) => (
+            <Tag {...tag} />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  @import "./index.css";
+</style>
